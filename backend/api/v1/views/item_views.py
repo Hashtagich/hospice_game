@@ -10,6 +10,7 @@ class ListAndRetrieveViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, m
     pass
 
 
+@extend_schema(tags=['Ресурсы'])
 class ResourceViewSet(ListAndRetrieveViewSet):
     serializer_class = ResourceSerializer
     queryset = Resource.objects.all()
