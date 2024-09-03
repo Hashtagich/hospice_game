@@ -26,7 +26,13 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
+    'rest_framework',
+    'drf_spectacular',
+]
+
+INSTALLED_APPS += [
     'api.apps.ApiConfig',
+    'items.apps.ItemsConfig',
 ]
 
 MIDDLEWARE = [
