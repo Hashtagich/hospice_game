@@ -9,6 +9,8 @@ v1_router.register('resources', ResourceViewSet, basename='resources')
 
 urlpatterns = [
     path("", include(v1_router.urls)),
+    path("auth/", include('djoser.urls')),
+    path("auth/", include('djoser.urls.jwt')),
 ]
 
 urlpatterns += [
