@@ -96,10 +96,77 @@ ___
 ___
 
 ## Запуск проекта
+___
 
+1. Клонируйте репозиторий:
 ```bash
-
+git clone https://github.com/Hashtagich/hospice_game.git
 ```
+
+2. Запускаем backend
+
+    2.1. Установите и активируйте виртуальное окружение:
+    ```bash
+    python -m venv venv
+    venv/Scripts/activate  - для Windows
+    venv/bin/activate - для Linux
+    ```
+
+    2.2 Перейдите в папку backend и установите зависимости:
+    ```bash
+    cd backend
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    ```
+
+    2.3 Находясь в папке backend создайте файл *.env* или заполните файл *template.env* и переименуйте его в *.env*:
+    ```bash
+    SECRET_KEY='Ваш секретный ключ проекта'
+    DEBUG=Булевое значение True или False
+    TIME_ZONE='Временная зона, например, UTC'
+    DB_NAME='Имя Базы данных (БД)'
+    DB_LOGIN='Логин БД'
+    DB_PASS='Пароль БД'
+    DB_HOST='Хост БД'
+    DB_PORT='Порт БД, например, 5432'
+    
+    EMAIL_HOST='Хост почты, например для gmail smtp.gmail.com или smtp.mail.ru для mail'
+    EMAIL_PORT=Порт почты, например, 587
+    DEFAULT_FROM_EMAIL='Почта с которой будет отправлять письма youremail@gmail.com если выбрали smtp.gmail.com'
+    EMAIL_USE_TLS=Булевое значение True или False причём EMAIL_USE_TLS не равен EMAIL_USE_SSL
+    EMAIL_USE_SSL=Булевое значение True или False причём EMAIL_USE_TLS не равен EMAIL_USE_SSL
+    EMAIL_HOST_PASSWORD='Пароль для внешнего приложения для доступа к почте, подробнее тут https://help.mail.ru/mail/security/protection/external/'
+    NOTIFICATION_EMAIL='Перечень почт куда будут отправлять письма, пишите через пробел, можно указать одну'
+    ```
+    
+    2.4 Находясь в папке backend выполните миграции:
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+    
+    2.5 Находясь в папке backend создайте суперпользователя:
+    ```bash
+    python manage.py createsuperuser
+    ```
+    
+    2.6 Находясь в папке backend запустите проект:
+    ```bash
+    python manage.py runserver
+    ```
+
+3. Запускаем frontend
+
+    3.1 Откройте второй терминал, перейдите в папку frontend и установите зависимости:
+    ```bash
+    cd frontend
+    npm install
+    ```
+   
+    3.2 Запустите frontend:
+    ```bash
+    npm start
+    ```
 
 ___
 
@@ -109,13 +176,56 @@ ___
 
 ***Страница с документацией по API***
 
-<code>http://127.0.0.1:8000/api/schema/swagger-ui/</code>
+<code>http://127.0.0.1:8000/api/v1/swagger/</code>
 
-***API Название раздела***
+***API Регистрация и логирование***
+<details>
+<summary><code>POST/api/v1/auth/users/</code></summary>
+
+
+
+*Регистрация пользователя. Необходимо ввести почту, никнейм и пароль. Пароль должен быть не менее 8 символов и содержать минимум одну заглавную и строчную латинскую букву и цифры.*
+
+```
+{
+  "email": "user@example.com",
+  "username": "string",
+  "password": "string",
+  "re_password": "string"
+}
+```
+
+</details>
+<details>
+<summary><code>POST/api/v1/auth/users/activation/</code></summary>
+
+
+
+*Активация пользователя. Необходимо ввести uid и token, приходят на почту в виде ссылки после регистрации.*
+
+```
+{
+  "uid": "string",
+  "token": "string"
+}
+```
+
+</details>
+<details>
+<summary><code>POST/api/v1/auth/jwt/create/</code></summary>
+
+*Логирование пользователя и генерация токена. Необходимо ввести никнейм и пароль пользователя.*
+
+```
+{
+  "username": "string",
+  "password": "string"
+}
+```
+
+</details>
 <details>
 <summary><code>GET/api/ссылка_на_апи/</code></summary>
-
-
 
 *Описание API*
 
@@ -127,7 +237,65 @@ ___
 <details>
 <summary><code>GET/api/ссылка_на_апи/</code></summary>
 
+*Описание API*
 
+```
+Код
+```
+
+</details>
+<details>
+<summary><code>GET/api/ссылка_на_апи/</code></summary>
+
+*Описание API*
+
+```
+Код
+```
+
+</details>
+<details>
+<summary><code>GET/api/ссылка_на_апи/</code></summary>
+
+*Описание API*
+
+```
+Код
+```
+
+</details>
+<details>
+<summary><code>GET/api/ссылка_на_апи/</code></summary>
+
+*Описание API*
+
+```
+Код
+```
+
+</details>
+<details>
+<summary><code>GET/api/ссылка_на_апи/</code></summary>
+
+*Описание API*
+
+```
+Код
+```
+
+</details>
+<details>
+<summary><code>GET/api/ссылка_на_апи/</code></summary>
+
+*Описание API*
+
+```
+Код
+```
+
+</details>
+<details>
+<summary><code>GET/api/ссылка_на_апи/</code></summary>
 
 *Описание API*
 
