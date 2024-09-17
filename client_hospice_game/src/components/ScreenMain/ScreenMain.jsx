@@ -7,7 +7,7 @@ const ScreenMain = () => {
     return (
         <section className={styles.container}>
             <div className={styles.wrapperTopButtons}>
-                <a className={styles.linkAncor}><Button className={styles.buttonGameplay} nameButton='Геймплей' ellipse={true}/></a>
+                <a className={styles.linkAncor} href='#gameplay'><Button className={styles.buttonGameplay} nameButton='Геймплей' ellipse={true}/></a>
                 <a className={styles.linkAncor} href='#aboutgame'><Button className={styles.buttonAboutGame} nameButton='Об игре' ellipse={true}/></a>
             </div>
 			<div className={styles.wrapperLogoAndButton}>

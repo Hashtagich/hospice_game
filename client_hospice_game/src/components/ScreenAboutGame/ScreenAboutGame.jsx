@@ -6,7 +6,7 @@ const ScreenAboutGame = () => {
     return (
         <section id='aboutgame' className={styles.container}>
             <div className={styles.wrapperRealCenterFoto}>
-                <div className={styles.image}></div>
+                <img className={styles.image}/>
                 <h2 className={styles.descriptionFotoCenter}>Реальный центр</h2>
             </div>
             <div className={styles.wrapperAboutGame}>
@@ -16,7 +16,7 @@ const ScreenAboutGame = () => {
                 </div>
                 <div className={styles.fotoAndButtonGame}>
                     <div>
-                        <div className={styles.fotoGame}></div>
+                        <img className={styles.fotoGame}/>
                         <h2 className={styles.descriptionFotoGame}>ИГРА</h2>
                     </div>
                     <a href='https://batanandrei.github.io/bird-build-unity/' target="_blank"><Button className={styles.button} nameButton='К ИГРЕ'/></a>

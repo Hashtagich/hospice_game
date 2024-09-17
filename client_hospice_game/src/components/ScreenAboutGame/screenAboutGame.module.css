@@ -14,6 +14,7 @@
 .image {
     width: 427px;
     height: 319px;
+    border-radius: 100px;
     background-image: url('../../images/imageRealCenter.png');
 }
 
@@ -63,6 +64,7 @@
 .fotoGame {
     width: 541px;
     height: 288px;
+    border-radius: 100px;
     background-image: url('../../images/imageGameScreen.png');
 }
 
