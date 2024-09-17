@@ -1,0 +1,14 @@
+.container {
+    width: 1360px;
+    height: 685px;
+    border: 1px solid;
+}
+
+.bigCircle {
+    position: relative;
+    top: -150px;
+    left: -39px;
+    width: 641px;
+    height: 865px;
+    background-image: url('../../svg/bigCircle.svg');
+}
