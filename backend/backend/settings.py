@@ -1,5 +1,9 @@
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 from datetime import timedelta
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,10 +12,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-86iyg1bo_xqeh-(j)@spm#tdyb#u!9qbkw8qboqd-@-h814@61'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DEBUG", "True") == "True")
 
 ALLOWED_HOSTS = []
 
@@ -82,7 +86,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.environ.get("DB_NAME"),
+    #     'USER': os.environ.get("DB_USER"),
+    #     'PASSWORD': os.environ.get("DB_PASSWORD"),
+    #     'HOST': os.environ.get("DB_HOST"),
+    #     'PORT': os.environ.get("DB_PORT"),
+    # }
 }
 
 # Password validation
@@ -111,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = os.environ.get("TIME_ZONE")
 
 USE_I18N = True
 
@@ -162,10 +174,10 @@ SIMPLE_JWT = {
 
 # EMAIL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER = 'yourmail'
-EMAIL_HOST_PASSWORD = 'pass'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-NOTIFICATION_EMAIL = 'mail'
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_PORT = os.environ.get("EMAIL_PORT")
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER = os.environ.get("DEFAULT_FROM_EMAIL")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS", "True") == "True")
+EMAIL_USE_SSL = bool(os.environ.get("EMAIL_USE_SSL", "False") == "True")
+NOTIFICATION_EMAIL = os.environ.get("NOTIFICATION_EMAIL").split(' ')
