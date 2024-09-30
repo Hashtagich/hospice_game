@@ -114,7 +114,7 @@ class UserAttributes(models.Model):
     )
 
     experience = models.PositiveIntegerField(
-        verbose_name='Пазлы',
+        verbose_name='Опыт',
         default=1
     )
 

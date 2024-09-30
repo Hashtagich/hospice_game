@@ -1,9 +1,16 @@
 from django.contrib import admin
-from .models import User
+from .models import User, UserAttributes
+
+
+class UserAttributesInline(admin.StackedInline):  # Или используйте TabularInline для горизонтального отображения
+    model = UserAttributes
+    can_delete = False
+    verbose_name_plural = 'Атрибуты пользователя'
 
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'username', 'is_staff', 'is_active')
-    search_fields = ('email', 'username')
-    list_filter = ('is_staff', 'is_active', 'username')
+    list_display = ('username', 'email', 'is_active', 'is_blocked', 'datetime_create')
+    inlines = [UserAttributesInline]
+
+    search_fields = ('username', 'email')
