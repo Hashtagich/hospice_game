@@ -2,10 +2,10 @@ from django.urls import include, path
 from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
                                    SpectacularSwaggerView)
 from rest_framework.routers import DefaultRouter
-from api.v1.views.item_views import ResourceViewSet
+# from api.v1.views.item_views import ResourceViewSet
 
 v1_router = DefaultRouter()
-v1_router.register('resources', ResourceViewSet, basename='resources')
+# v1_router.register('resources', ResourceViewSet, basename='resources')
 
 urlpatterns = [
     path("", include(v1_router.urls)),

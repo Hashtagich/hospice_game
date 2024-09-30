@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG", "True") == "True")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -43,7 +43,6 @@ INSTALLED_APPS += [
 
 INSTALLED_APPS += [
     'api.apps.ApiConfig',
-    'items.apps.ItemsConfig',
     'users.apps.UsersConfig',
 ]
 
@@ -78,7 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -90,8 +88,8 @@ DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
     #     'NAME': os.environ.get("DB_NAME"),
-    #     'USER': os.environ.get("DB_USER"),
-    #     'PASSWORD': os.environ.get("DB_PASSWORD"),
+    #     'USER': os.environ.get("DB_LOGIN"),
+    #     'PASSWORD': os.environ.get("DB_PASS"),
     #     'HOST': os.environ.get("DB_HOST"),
     #     'PORT': os.environ.get("DB_PORT"),
     # }
@@ -121,9 +119,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
+# LANGUAGE_CODE = 'ru'
+#
+# TIME_ZONE = 'UTC'
 
-TIME_ZONE = os.environ.get("TIME_ZONE")
+LANGUAGE_CODE = os.getenv('LANGUAGE_CODE')
+
+TIME_ZONE = os.getenv('TIME_ZONE')
 
 USE_I18N = True
 
@@ -133,6 +135,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -166,7 +172,6 @@ DJOSER = {
     'USER_CREATE_PASSWORD_RECOVERY': True,
 }
 
-
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
@@ -181,3 +186,10 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = bool(os.environ.get("EMAIL_USE_TLS", "True") == "True")
 EMAIL_USE_SSL = bool(os.environ.get("EMAIL_USE_SSL", "False") == "True")
 NOTIFICATION_EMAIL = os.environ.get("NOTIFICATION_EMAIL").split(' ')
+
+# CELERY
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+CELERY_ACCEPT_CONTENT = os.environ.get("CELERY_ACCEPT_CONTENT").split(' ')
+CELERY_TASK_SERIALIZER = os.getenv('CELERY_TASK_SERIALIZER', 'json')
+CELERY_RESULT_SERIALIZER = os.getenv('CELERY_RESULT_SERIALIZER', 'json')
