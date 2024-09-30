@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
+from django.utils import timezone
 
 
 class UserManager(BaseUserManager):
@@ -33,6 +34,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    """Модель пользователя"""
     username = models.CharField(
         'Username',
         max_length=128,
@@ -59,6 +61,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=False
     )
 
+    datetime_create = models.DateTimeField(
+        verbose_name='Дата регистрации',
+        auto_now_add=True
+    )
+
+    datetime_first_pay = models.DateTimeField(
+        verbose_name='Дата первой покупки',
+        blank=True,
+        null=True
+    )
+
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
 
@@ -71,3 +84,108 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f'{self.username}'
+
+    def set_datetime_first_pay(self):
+        """Установка даты первой покупки"""
+        self.datetime_first_pay = timezone.now()
+
+
+class UserAttributes(models.Model):
+    """Модель атрибутов пользователя"""
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='attributes'
+    )
+
+    level = models.PositiveIntegerField(
+        verbose_name='Уровень игрока',
+        default=1
+    )
+
+    money = models.PositiveIntegerField(
+        verbose_name='Монеты',
+        default=1
+    )
+
+    puzzles = models.PositiveIntegerField(
+        verbose_name='Пазлы',
+        default=1
+    )
+
+    experience = models.PositiveIntegerField(
+        verbose_name='Пазлы',
+        default=1
+    )
+
+    class Meta:
+        verbose_name = 'Атрибуты пользователя'
+        verbose_name_plural = 'Атрибуты пользователей'
+
+
+class Task(models.Model):
+    """Модель задачи."""
+    name = models.CharField(
+        verbose_name='Название задачи',
+        max_length=60,
+        null=True
+    )
+    is_done = models.BooleanField(
+        verbose_name='Выполнена',
+        default=False
+    )
+    datetime_create = models.DateTimeField(
+        verbose_name='Дата создания задачи',
+        auto_now_add=True
+    )
+
+    user = models.ForeignKey(
+        User,
+        related_name='tasks',
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Задача'
+        verbose_name_plural = 'Задачи'
+        ordering = ('is_done', 'name')
+
+
+class GameSettings(models.Model):
+    """Модель настроек игры."""
+    CHOICE_LANGUAGE = (
+        ('ru', 'Русский'),
+        ('en', 'Английский'),
+    )
+
+    user_attributes = models.OneToOneField(
+        UserAttributes,
+        on_delete=models.CASCADE,
+        related_name='settings'
+    )
+
+    volume = models.PositiveIntegerField(
+        verbose_name='Громкость игры',
+        default=0
+    )
+    notifications = models.BooleanField(
+        verbose_name='Уведомления',
+        default=False
+    )
+
+    language = models.CharField(
+        verbose_name='Язык',
+        max_length=20,
+        choices=CHOICE_LANGUAGE,
+        default='ru'
+    )
+
+    def __str__(self):
+        return f'{self.volume}'
+
+    class Meta:
+        verbose_name = 'Настройки игры'
+        verbose_name_plural = 'Настройки игры'

@@ -44,6 +44,8 @@ INSTALLED_APPS += [
 INSTALLED_APPS += [
     'api.apps.ApiConfig',
     'users.apps.UsersConfig',
+    'environment.apps.EnvironmentConfig',
+    'npc.apps.NpcConfig',
 ]
 
 MIDDLEWARE = [
