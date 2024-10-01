@@ -65,6 +65,11 @@ def clear_procedure_db():
     return clear_db(name_model=Procedure)
 
 
+def clear_diagnosis_db():
+    """Функция для удаления базы данных Диагнозов."""
+    return clear_db(name_model=Diagnosis)
+
+
 def clear_patient_db():
     """Функция для удаления базы данных Пациентов."""
     return clear_db(name_model=Patient)
