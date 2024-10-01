@@ -38,6 +38,9 @@ class Patient(models.Model):
         verbose_name='Диагноз'
     )
 
+    def __str__(self):
+        return f'{self.name} {self.age} лет'
+
     class Meta:
         verbose_name = 'Пациент'
         verbose_name_plural = 'Пациенты'
@@ -56,9 +59,13 @@ class Diagnosis(models.Model):
         null=True
     )
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Диагноз'
         verbose_name_plural = 'Диагнозы'
+        ordering = ['id']
 
 
 class Categories(models.Model):
@@ -69,9 +76,13 @@ class Categories(models.Model):
         null=True
     )
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Категория процедур'
         verbose_name_plural = 'Категории процедур'
+        ordering = ['id']
 
 
 class Procedure(models.Model):
@@ -97,7 +108,8 @@ class Procedure(models.Model):
 
     effectiveness = models.TextField(
         verbose_name='Эффективность',
-        null=True
+        null=True,
+        blank=True,
     )
 
     execution_time = models.PositiveIntegerField(
@@ -105,6 +117,10 @@ class Procedure(models.Model):
         null=True
     )
 
+    def __str__(self):
+        return f'{self.name} {self.execution_time} мин.'
+
     class Meta:
         verbose_name = 'Процедур'
         verbose_name_plural = 'Процедуры'
+        ordering = ['id']
