@@ -124,3 +124,38 @@ class Procedure(models.Model):
         verbose_name = 'Процедур'
         verbose_name_plural = 'Процедуры'
         ordering = ['id']
+
+
+class PatientProcedure(models.Model):
+    """Промежуточная модель для связи пациента с процедурами"""
+    patient = models.ForeignKey(
+        Patient,
+        on_delete=models.CASCADE,
+        verbose_name='Пациент',
+        related_name='patient_procedures'
+    )
+
+    procedure = models.ForeignKey(
+        Procedure,
+        on_delete=models.CASCADE,
+        verbose_name='Процедура',
+        related_name='procedure_patients'
+    )
+
+    counter = models.PositiveIntegerField(
+        verbose_name='Счётчик',
+        default=0
+    )
+
+    is_done = models.BooleanField(
+        verbose_name='Выполнена',
+        default=False
+    )
+
+    def __str__(self):
+        return f'{self.patient.name} - {self.procedure.name}'
+
+    class Meta:
+        # unique_together = ('patient', 'procedure')  # Уникальность комбинации пациент-процедура
+        verbose_name = 'Процедура пациента'
+        verbose_name_plural = 'Процедуры пациентов'

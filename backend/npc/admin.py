@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Diagnosis, Patient, Categories, Procedure
+from .models import Diagnosis, Patient, Categories, Procedure, PatientProcedure
 
 
 # Register your models here.
@@ -22,3 +22,10 @@ class CategoriesAdmin(admin.ModelAdmin):
 @admin.register(Procedure)
 class ProcedureAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'categories', 'effectiveness')
+
+
+@admin.register(PatientProcedure)
+class PatientProcedureAdmin(admin.ModelAdmin):
+    list_display = ('patient', 'procedure', 'counter', 'is_done')  # Поля, которые будут отображаться в списке
+    search_fields = ('patient__name', 'procedure__name')  # Поиск по полям
+    list_filter = ('patient', 'procedure', 'is_done')  # Фильтрация по полям
