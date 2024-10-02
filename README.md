@@ -1,1 +1,1 @@
-# hospice_game
+# hospice_game/
