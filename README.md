@@ -151,7 +151,7 @@ POSTGRES_PASSWORD=Например, db
 
 ### 3. Сборка и запуск контейнеров
 ```bash
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 ### 4. Создание суперпользователя
