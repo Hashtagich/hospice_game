@@ -98,7 +98,77 @@ ___
 ## Запуск проекта
 ___
 
-1. Клонируйте репозиторий:
+<details>
+
+<summary>
+
+### Первый способ, через Docker compose
+</summary>
+
+### 1. Клонирование репозиторий
+```bash
+git clone https://github.com/Hashtagich/hospice_game.git
+```
+
+### 2. Установка переменных окружения
+***В корен проекта заполняем файл template.db.env и переименовываем его в db.env или просто создаём файл db.env и заполняем его***
+```bash
+POSTGRES_DB=Например, db
+POSTGRES_USER=Например, db
+POSTGRES_PASSWORD=Например, db
+```
+
+***В папке backend заполняем файл template.env и переименовываем его в .env или просто создаём файл .env и заполняем его***
+ ```bash
+ SECRET_KEY='Ваш секретный ключ проекта'
+ DEBUG=Булевое значение True или False
+ ALLOWED_HOSTS='Разрешенные хосты'
+ LANGUAGE_CODE='Язык, например, ru'
+ TIME_ZONE='Временная зона, например, UTC'
+
+ DB_NAME='Имя Базы данных (БД), например, db'
+ DB_LOGIN='Логин БД, например, db'
+ DB_PASS='Пароль БД, например, db'
+ DB_HOST='Хост БД, например, db'
+ DB_PORT='Порт БД, например, 5432'
+ 
+ EMAIL_BACKEND='Сервис для почты, например, django.core.mail.backends.smtp.EmailBackend'
+ EMAIL_HOST='Хост почты, например для gmail smtp.gmail.com или smtp.mail.ru для mail'
+ EMAIL_PORT=Порт почты, например, 587
+ DEFAULT_FROM_EMAIL='Почта с которой будет отправлять письма youremail@gmail.com если выбрали smtp.gmail.com'
+ EMAIL_USE_TLS=Булевое значение True или False причём EMAIL_USE_TLS не равен EMAIL_USE_SSL
+ EMAIL_USE_SSL=Булевое значение True или False причём EMAIL_USE_TLS не равен EMAIL_USE_SSL
+ EMAIL_HOST_PASSWORD='Пароль для внешнего приложения для доступа к почте, подробнее тут https://help.mail.ru/mail/security/protection/external/'
+ NOTIFICATION_EMAIL='Перечень почт куда будут отправлять письма, пишите через пробел, можно указать одну'
+
+ CELERY_BROKER_URL='URL-адрес брокера сообщений, например,redis://localhost:6379'
+ CELERY_RESULT_BACKEND='Место хранения результатов выполнения задач, например,redis://localhost:6379'
+ CELERY_ACCEPT_CONTENT='Список форматов, которые Celery будет принимать в качестве контента для задач, например,application/json'
+ CELERY_TASK_SERIALIZER='Сериализатор, который будет использоваться для сериализации задач перед их отправкой, например,json'
+ CELERY_RESULT_SERIALIZER='Сериализатор, который будет использоваться для сериализации результатов задач, например,json'
+ ```
+   
+
+### 3. Сборка и запуск контейнеров
+```bash
+docker-compose up --build
+```
+
+### 4. Создание суперпользователя
+```bash
+docker-compose exec web python manage.py createsuperuser
+```
+
+</details>
+
+<details>
+
+<summary>
+
+### Второй способ, без использования Docker compose
+</summary>
+
+### 1. Клонируйте репозиторий:
 ```bash
 git clone https://github.com/Hashtagich/hospice_game.git
 ```
@@ -123,13 +193,17 @@ git clone https://github.com/Hashtagich/hospice_game.git
     ```bash
     SECRET_KEY='Ваш секретный ключ проекта'
     DEBUG=Булевое значение True или False
+    ALLOWED_HOSTS='Разрешенные хосты'
+    LANGUAGE_CODE='Язык, например, ru'
     TIME_ZONE='Временная зона, например, UTC'
+   
     DB_NAME='Имя Базы данных (БД)'
     DB_LOGIN='Логин БД'
     DB_PASS='Пароль БД'
     DB_HOST='Хост БД'
     DB_PORT='Порт БД, например, 5432'
     
+    EMAIL_BACKEND='Сервис для почты, например, django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST='Хост почты, например для gmail smtp.gmail.com или smtp.mail.ru для mail'
     EMAIL_PORT=Порт почты, например, 587
     DEFAULT_FROM_EMAIL='Почта с которой будет отправлять письма youremail@gmail.com если выбрали smtp.gmail.com'
@@ -137,6 +211,21 @@ git clone https://github.com/Hashtagich/hospice_game.git
     EMAIL_USE_SSL=Булевое значение True или False причём EMAIL_USE_TLS не равен EMAIL_USE_SSL
     EMAIL_HOST_PASSWORD='Пароль для внешнего приложения для доступа к почте, подробнее тут https://help.mail.ru/mail/security/protection/external/'
     NOTIFICATION_EMAIL='Перечень почт куда будут отправлять письма, пишите через пробел, можно указать одну'
+   
+    CELERY_BROKER_URL='URL-адрес брокера сообщений, например,redis://localhost:6379'
+    CELERY_RESULT_BACKEND='Место хранения результатов выполнения задач, например,redis://localhost:6379'
+    CELERY_ACCEPT_CONTENT='Список форматов, которые Celery будет принимать в качестве контента для задач, например,application/json'
+    CELERY_TASK_SERIALIZER='Сериализатор, который будет использоваться для сериализации задач перед их отправкой, например,json'
+    CELERY_RESULT_SERIALIZER='Сериализатор, который будет использоваться для сериализации результатов задач, например,json'
+    ```
+   
+    2.3.1 В файле backend/backend/settings.py находим переменную DATABASES и заменяем на:
+    ```bash
+    DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     },
     ```
     
     2.4 Находясь в папке backend выполните миграции:
@@ -167,16 +256,29 @@ git clone https://github.com/Hashtagich/hospice_game.git
     ```bash
     npm start
     ```
+</details>
 
 ___
 
 ### API
 
+
+
 <font color="red">Информация может быть изменена</font>
+
+***URL***
+
+При запуске через Docker compose, например, http://127.0.0.1 или http://localhost т.е. без :8000
+
+При запуске вторым способом, без Docker compose http://127.0.0.1:8000
+
+***Страница Админ панели***
+
+<code>{{URL}}/admin/</code>
 
 ***Страница с документацией по API***
 
-<code>http://127.0.0.1:8000/api/v1/swagger/</code>
+<code>{{URL}}/api/v1/swagger/</code>
 
 ***API Регистрация и логирование***
 <details>
