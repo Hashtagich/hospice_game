@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG", "True") == "True")
+DEBUG = bool(os.environ.get("DEBUG", "False") == "True")
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 
@@ -83,18 +83,18 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': os.environ.get("DB_NAME"),
-    #     'USER': os.environ.get("DB_LOGIN"),
-    #     'PASSWORD': os.environ.get("DB_PASS"),
-    #     'HOST': os.environ.get("DB_HOST"),
-    #     'PORT': os.environ.get("DB_PORT"),
-    # }
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_LOGIN"),
+        'PASSWORD': os.environ.get("DB_PASS"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT"),
+    }
 }
 
 # Password validation
@@ -121,9 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-# LANGUAGE_CODE = 'ru'
-#
-# TIME_ZONE = 'UTC'
 
 LANGUAGE_CODE = os.getenv('LANGUAGE_CODE')
 
@@ -137,9 +134,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type
