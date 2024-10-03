@@ -116,6 +116,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'users.validators.UppercaseValidator',
     },
+    {
+        'NAME': 'users.validators.LowercaseValidator',
+    },
+    {
+        'NAME': 'users.validators.NumericPasswordValidator',
+    }
 ]
 
 # Internationalization
