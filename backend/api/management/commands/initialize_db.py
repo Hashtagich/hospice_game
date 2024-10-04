@@ -1,7 +1,10 @@
 from django.core.management.base import BaseCommand
 from .command_for_npc import (
-    create_categories_db, create_procedure_db, create_patient_db, create_diagnosis_db)
-
+    create_categories_procedure_db, create_procedure_db, create_patient_db, create_diagnosis_db
+)
+from .command_for_environment import (
+    create_categories_furniture_db
+)
 
 class Command(BaseCommand):
     """
@@ -13,9 +16,10 @@ class Command(BaseCommand):
     Инициализировать баз данных'''
 
     def handle(self, *args, **options):
-        create_categories_db()
+        # NPC
+        create_categories_procedure_db()
         self.stdout.write(self.style.SUCCESS(
-            'Initialize db Categories successfully.\nИнициализация базы данных Категории выполнена успешно.'))
+            'Initialize db Categories successfully.\nИнициализация базы данных Категорий процедур выполнена успешно.'))
 
         create_procedure_db()
         self.stdout.write(self.style.SUCCESS(
@@ -29,5 +33,11 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(
             'Initialize db Patient successfully.\nИнициализация базы данных Пациентов выполнена успешно.'))
 
+        # Environment
+        create_categories_furniture_db()
+        self.stdout.write(self.style.SUCCESS(
+            'Initialize db Categories successfully.\nИнициализация базы данных Категорий мебели выполнена успешно.'))
+
+        # End
         self.stdout.write(self.style.SUCCESS(
             'Initialize db command executed successfully.\nКоманда инициализации базы данных выполнена успешно.'))

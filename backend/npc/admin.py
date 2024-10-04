@@ -26,6 +26,6 @@ class ProcedureAdmin(admin.ModelAdmin):
 
 @admin.register(PatientProcedure)
 class PatientProcedureAdmin(admin.ModelAdmin):
-    list_display = ('patient', 'procedure', 'counter', 'is_done')  # Поля, которые будут отображаться в списке
+    list_display = ('id', 'patient', 'procedure', 'counter', 'is_done')  # Поля, которые будут отображаться в списке
     search_fields = ('patient__name', 'procedure__name')  # Поиск по полям
     list_filter = ('patient', 'procedure', 'is_done')  # Фильтрация по полям

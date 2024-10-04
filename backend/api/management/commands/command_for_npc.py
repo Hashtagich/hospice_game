@@ -3,9 +3,9 @@ from .support_def import get_json, clear_db, create_simple_db, get_first_id
 
 
 # Create
-def create_categories_db():
-    """Функция для наполнения базы данных Категории из файла category.json"""
-    create_simple_db(name_model=Categories, name_json_file='category')
+def create_categories_procedure_db():
+    """Функция для наполнения базы данных Категорий процедур из файла category_procedure.json"""
+    create_simple_db(name_model=Categories, name_json_file='category_procedure')
 
 
 def create_procedure_db():
@@ -55,8 +55,8 @@ def create_patient_db():
 
 
 # Delete
-def clear_categories_db():
-    """Функция для удаления базы данных Категории."""
+def clear_categories_procedure_db():
+    """Функция для удаления базы данных Категорий процедур."""
     return clear_db(name_model=Categories)
 
 

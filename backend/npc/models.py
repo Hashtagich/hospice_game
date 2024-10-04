@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 class Patient(models.Model):
-    """Модель пациента"""
+    """Модель пациента."""
     name = models.CharField(
         verbose_name='Имя пациента',
         max_length=15,
@@ -47,7 +47,7 @@ class Patient(models.Model):
 
 
 class Diagnosis(models.Model):
-    """Модель диагноза"""
+    """Модель диагноза."""
     name = models.CharField(
         verbose_name='Название',
         max_length=70,
@@ -69,7 +69,7 @@ class Diagnosis(models.Model):
 
 
 class Categories(models.Model):
-    """Модель категории процедур"""
+    """Модель категории процедур."""
     name = models.CharField(
         verbose_name='Название',
         max_length=30,
@@ -86,7 +86,7 @@ class Categories(models.Model):
 
 
 class Procedure(models.Model):
-    """Модель процедуры"""
+    """Модель процедуры."""
     name = models.CharField(
         verbose_name='Название',
         max_length=30,
@@ -127,7 +127,7 @@ class Procedure(models.Model):
 
 
 class PatientProcedure(models.Model):
-    """Промежуточная модель для связи пациента с процедурами"""
+    """Промежуточная модель для связи пациента с процедурами."""
     patient = models.ForeignKey(
         Patient,
         on_delete=models.CASCADE,
@@ -159,3 +159,4 @@ class PatientProcedure(models.Model):
         # unique_together = ('patient', 'procedure')  # Уникальность комбинации пациент-процедура
         verbose_name = 'Процедура пациента'
         verbose_name_plural = 'Процедуры пациентов'
+        ordering = ['id']
