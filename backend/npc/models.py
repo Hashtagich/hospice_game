@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from environment.models import Room
 
 
 # Create your models here.
@@ -112,6 +113,75 @@ class Procedure(models.Model):
         ordering = ['id']
 
 
+class Profession(models.Model):
+    """Модель профессии врача."""
+    name = models.CharField(
+        verbose_name='Название',
+        max_length=30,
+        null=True
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Профессия врача'
+        verbose_name_plural = 'Профессии врачей'
+        ordering = ['id']
+
+
+class Doctor(models.Model):
+    """Модель Врача."""
+    name = models.CharField(
+        verbose_name='Имя',
+        max_length=15,
+        null=True
+    )
+
+    surname = models.CharField(
+        verbose_name='Фамилия',
+        max_length=15,
+        null=True
+    )
+
+    patronymic = models.CharField(
+        verbose_name='Отчество',
+        max_length=20,
+        null=True
+    )
+
+    profession = models.ForeignKey(
+        'Profession',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name='Профессия'
+    )
+
+    work_experience = models.CharField(
+        verbose_name='Стаж',
+        max_length=40,
+        null=True
+    )
+
+    room = models.ForeignKey(
+        Room,
+        related_name='doctor',
+        verbose_name='Комната',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+    )
+
+    def __str__(self):
+        return f'{self.surname} {self.patronymic} {self.name} - {self.profession}'
+
+    class Meta:
+        verbose_name = 'Врач'
+        verbose_name_plural = 'Врачи'
+        ordering = ['id']
+
+
 class PatientProcedure(models.Model):
     """Промежуточная модель для связи пациента с процедурами."""
     patient = models.ForeignKey(
@@ -181,3 +251,43 @@ class UserPatient(models.Model):
         verbose_name = 'Пациент пользователя'
         verbose_name_plural = 'Пациенты пользователей'
         ordering = ['id']
+
+
+class UserDoctor(models.Model):
+    """Промежуточная модель для связи пользователя с врачом."""
+    doctor = models.ForeignKey(
+        Doctor,
+        on_delete=models.CASCADE,
+        verbose_name='Врач',
+        related_name='doctor_users'
+    )
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Пользователь',
+        related_name='user_doctors'
+    )
+
+    level = models.PositiveIntegerField(
+        verbose_name='Уровень',
+        default=1
+    )
+
+    busyness = models.PositiveIntegerField(
+        verbose_name='Занятость',
+        default=1
+    )
+
+    def __str__(self):
+        return f'{self.user.username} - {self.doctor}'
+
+    class Meta:
+        verbose_name = 'Врач пользователя'
+        verbose_name_plural = 'Врачи пользователей'
+        ordering = ['id']
+
+    def level_up(self, point: int = 1):
+        """Метод увеличения уровня и занятости врача. Увеличивается на величину point, по дефолту = 1."""
+        self.level += point
+        self.busyness += point
