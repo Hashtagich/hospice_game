@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 # Create your models here.
@@ -14,20 +15,6 @@ class Patient(models.Model):
     age = models.PositiveIntegerField(
         verbose_name='Возраст',
         default=5
-    )
-
-    condition = models.PositiveIntegerField(
-        verbose_name='Состояние',
-        default=1
-    )
-    sentiment = models.PositiveIntegerField(
-        verbose_name='Настроение',
-        default=1
-    )
-
-    fatigue = models.PositiveIntegerField(
-        verbose_name='Усталость',
-        default=1
     )
 
     diagnosis = models.ForeignKey(
@@ -106,10 +93,9 @@ class Procedure(models.Model):
         null=True
     )
 
-    effectiveness = models.TextField(
+    effectiveness = models.PositiveIntegerField(
         verbose_name='Эффективность',
-        null=True,
-        blank=True,
+        default=1
     )
 
     execution_time = models.PositiveIntegerField(
@@ -159,4 +145,39 @@ class PatientProcedure(models.Model):
         # unique_together = ('patient', 'procedure')  # Уникальность комбинации пациент-процедура
         verbose_name = 'Процедура пациента'
         verbose_name_plural = 'Процедуры пациентов'
+        ordering = ['id']
+
+
+class UserPatient(models.Model):
+    """Промежуточная модель для связи пользователя с пациентом."""
+    patient = models.ForeignKey(
+        Patient,
+        on_delete=models.CASCADE,
+        verbose_name='Пациент',
+        related_name='patient_users'
+    )
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Пользователь',
+        related_name='user_patients'
+    )
+
+    is_done = models.BooleanField(
+        verbose_name='Реабилитирован',
+        default=False
+    )
+
+    rehabilitation = models.PositiveIntegerField(
+        verbose_name='Реабилитация',
+        default=1
+    )
+
+    def __str__(self):
+        return f'{self.user.username} - {self.patient.name}'
+
+    class Meta:
+        verbose_name = 'Пациент пользователя'
+        verbose_name_plural = 'Пациенты пользователей'
         ordering = ['id']

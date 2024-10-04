@@ -59,6 +59,14 @@ class Furniture(models.Model):
         null=True
     )
 
+    categories = models.ForeignKey(
+        Categories,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name='Категория'
+    )
+
     price = models.PositiveIntegerField(
         verbose_name='Стоимость',
         default=1
@@ -68,26 +76,15 @@ class Furniture(models.Model):
         Room,
         related_name='furniture',
         verbose_name='Комната',
-        on_delete=models.CASCADE
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
     )
 
     description = models.TextField(
         verbose_name='Описание',
         null=True,
         blank=True
-    )
-
-    in_warehouse = models.BooleanField(
-        verbose_name='На складе',
-        default=False
-    )
-
-    categories = models.ForeignKey(
-        Categories,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        verbose_name='Категория'
     )
 
     def __str__(self):
@@ -117,16 +114,49 @@ class UserRoom(models.Model):
     )
 
     max_furniture_count = models.PositiveIntegerField(
-        verbose_name='Максимальное кол-во мебели в комнате',
+        verbose_name='Max кол-во мебели в комнате',
         default=1
     )
 
     max_medical_equipment_count = models.PositiveIntegerField(
-        verbose_name='Максимальное кол-во мед оборудования в комнате',
+        verbose_name='Max кол-во спец мед оборудования в комнате',
+        default=1
+    )
+
+    max_auxiliary_equipment_count = models.PositiveIntegerField(
+        verbose_name='Max кол-во вспомогательного оборудования в комнате',
+        default=1
+    )
+
+    max_decor_elements_count = models.PositiveIntegerField(
+        verbose_name='Max кол-во элементов декора в комнате',
         default=1
     )
 
     class Meta:
         verbose_name = 'Комната пользователя'
-        verbose_name_plural = 'Комнаты пользователя'
+        verbose_name_plural = 'Комнаты пользователей'
+        ordering = ['id']
+
+
+class UserFurniture(models.Model):
+    """Промежуточная модель для связи пользователя и мебели."""
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+
+    furniture = models.ForeignKey(
+        Furniture,
+        on_delete=models.CASCADE
+    )
+
+    in_warehouse = models.BooleanField(
+        verbose_name='На складе',
+        default=False
+    )
+
+    class Meta:
+        verbose_name = 'Мебель пользователя'
+        verbose_name_plural = 'Мебель пользователей'
         ordering = ['id']
