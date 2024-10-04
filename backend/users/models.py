@@ -122,6 +122,50 @@ class UserAttributes(models.Model):
         verbose_name = 'Атрибуты пользователя'
         verbose_name_plural = 'Атрибуты пользователей'
 
+    @staticmethod
+    def check_funds(currency: int, point: int) -> bool:
+        """Проверяет, можно ли вычесть указанную сумму без отрицательного результата."""
+        return currency - point >= 0
+
+    def level_up(self, point: int = 1):
+        """Метод увеличения уровня пользователя. Увеличивается на величину point, по дефолту = 1."""
+        self.level += point
+
+    def money_up(self, point: int = 1):
+        """Метод увеличения валюты пользователя. Увеличивается на величину point, по дефолту = 1."""
+        self.money += point
+
+    def money_down(self, point: int = 1):
+        """Метод уменьшения валюты пользователя. Уменьшается на величину point, по дефолту = 1."""
+        if self.check_funds(currency=self.money, point=point):
+            self.money -= point
+        else:
+            raise ValueError("Недостаточно средств для вычитания этой суммы.")
+
+    def puzzles_up(self, point: int = 1):
+        """Метод увеличения пазлов пользователя. Увеличивается на величину point, по дефолту = 1."""
+        self.puzzles += point
+
+    def puzzles_down(self, point: int = 1):
+        """Метод уменьшения валюты пользователя. Уменьшается на величину point, по дефолту = 1."""
+        if self.check_funds(currency=self.puzzles, point=point):
+            self.money -= point
+        else:
+            raise ValueError("Недостаточно средств для вычитания этой суммы.")
+
+    def experience_up(self, point: int = 1):
+        """
+        Метод увеличения опыта пользователя. Увеличивается на величину point, по дефолту = 1.
+        Как только становиться больше или равен 1000 то уменьшается на 100 и автоматически повышает уровень пользователя
+        на 1 и даёт 100 валюты и 1 пазл.
+        """
+        self.experience += point
+        if self.experience >= 1000:
+            self.experience -= 1000
+            self.money_up(point=100)
+            self.puzzles_up(point=1)
+            self.level_up()
+
 
 class Task(models.Model):
     """Модель задачи."""
