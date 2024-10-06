@@ -93,7 +93,7 @@ class Furniture(models.Model):
     class Meta:
         verbose_name = 'Мебель'
         verbose_name_plural = 'Мебель'
-        ordering = ['id']
+        ordering = ['categories__id', 'id']
 
 
 class UserRoom(models.Model):

@@ -1,12 +1,16 @@
 from django.urls import include, path
-from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
-                                   SpectacularSwaggerView)
+from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView)
 from rest_framework.routers import DefaultRouter
 from .views.user_view import (UserViewSet, LevelUpView, MoneyUpView, PuzzlesUpView, ExperienceUpView, PuzzlesDownView,
                               MoneyDownView)
+from .views.npc_view import (DoctorViewSet)
+from .views.environment_view import (RoomViewSet, FurnitureViewSet)
 
 v1_router = DefaultRouter()
 v1_router.register('users', UserViewSet, basename='users')
+v1_router.register('doctors', DoctorViewSet, basename='doctors')
+v1_router.register('rooms', RoomViewSet, basename='rooms')
+v1_router.register('furniture', FurnitureViewSet, basename='furniture')
 
 urlpatterns = [
     path("", include(v1_router.urls)),
@@ -14,6 +18,7 @@ urlpatterns = [
     path("auth/", include('djoser.urls.jwt')),
 ]
 
+# Users method
 urlpatterns += [
     path('level_up/', LevelUpView.as_view(), name='level-up'),
     path('money_up/', MoneyUpView.as_view(), name='money-up'),
