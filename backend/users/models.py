@@ -18,6 +18,9 @@ class UserManager(BaseUserManager):
         )
         user.set_password(password)
         user.save(using=self.db)
+
+        UserAttributes.objects.create(user=user)
+
         return user
 
     def create_user(self, email, password, **kwargs):
@@ -105,35 +108,52 @@ class UserAttributes(models.Model):
 
     money = models.PositiveIntegerField(
         verbose_name='Монеты',
-        default=1
+        default=1000
     )
 
     puzzles = models.PositiveIntegerField(
         verbose_name='Пазлы',
-        default=1
+        default=100
     )
 
     experience = models.PositiveIntegerField(
         verbose_name='Опыт',
-        default=1
+        default=0
     )
+
+    def __str__(self):
+        return f'{self.user.username} - уровень {self.level}'
 
     class Meta:
         verbose_name = 'Атрибуты пользователя'
         verbose_name_plural = 'Атрибуты пользователей'
 
     @staticmethod
+    def check_point(point: int) -> bool:
+        """Проверяет корректности вводимых данных."""
+        return point <= 0
+
+    @staticmethod
     def check_funds(currency: int, point: int) -> bool:
         """Проверяет, можно ли вычесть указанную сумму без отрицательного результата."""
-        return currency - point >= 0
+        if UserAttributes.check_point(point):
+            raise ValueError("Число должно быть строго больше 0.")
+        else:
+            return currency - point >= 0
 
     def level_up(self, point: int = 1):
         """Метод увеличения уровня пользователя. Увеличивается на величину point, по дефолту = 1."""
-        self.level += point
+        if self.check_point(point):
+            raise ValueError("Число должно быть строго больше 0.")
+        else:
+            self.level += point
 
     def money_up(self, point: int = 1):
         """Метод увеличения валюты пользователя. Увеличивается на величину point, по дефолту = 1."""
-        self.money += point
+        if self.check_point(point):
+            raise ValueError("Число должно быть строго больше 0.")
+        else:
+            self.money += point
 
     def money_down(self, point: int = 1):
         """Метод уменьшения валюты пользователя. Уменьшается на величину point, по дефолту = 1."""
@@ -144,12 +164,15 @@ class UserAttributes(models.Model):
 
     def puzzles_up(self, point: int = 1):
         """Метод увеличения пазлов пользователя. Увеличивается на величину point, по дефолту = 1."""
-        self.puzzles += point
+        if self.check_point(point):
+            raise ValueError("Число должно быть строго больше 0.")
+        else:
+            self.puzzles += point
 
     def puzzles_down(self, point: int = 1):
         """Метод уменьшения валюты пользователя. Уменьшается на величину point, по дефолту = 1."""
         if self.check_funds(currency=self.puzzles, point=point):
-            self.money -= point
+            self.puzzles -= point
         else:
             raise ValueError("Недостаточно средств для вычитания этой суммы.")
 
