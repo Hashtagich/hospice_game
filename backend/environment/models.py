@@ -133,10 +133,27 @@ class UserRoom(models.Model):
         default=1
     )
 
+    def __str__(self):
+        return f'{self.user.username} - {self.room.name}'
+
     class Meta:
         verbose_name = 'Комната пользователя'
         verbose_name_plural = 'Комнаты пользователей'
         ordering = ['id']
+
+    def level_up(self, point: int = 1, money: int = 1):
+        """Метод увеличения уровня комнаты. Увеличивается на величину point, по дефолту = 1."""
+        user_attributes = self.user.attributes
+        user_attributes.money_down(point=money)
+        if user_attributes.check_point(point):
+            raise ValueError("Число должно быть строго больше 0.")
+        else:
+            self.level += point
+            self.max_furniture_count += point
+            self.max_medical_equipment_count += point
+            self.max_auxiliary_equipment_count += point
+            self.max_decor_elements_count += point
+            self.save()
 
 
 class UserFurniture(models.Model):

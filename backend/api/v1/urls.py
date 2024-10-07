@@ -4,13 +4,16 @@ from rest_framework.routers import DefaultRouter
 from .views.user_view import (UserViewSet, LevelUpView, MoneyUpView, PuzzlesUpView, ExperienceUpView, PuzzlesDownView,
                               MoneyDownView)
 from .views.npc_view import (DoctorViewSet)
-from .views.environment_view import (RoomViewSet, FurnitureViewSet)
+from .views.environment_view import (RoomViewSet, FurnitureViewSet, UserRoomViewSet, LevelUpRoomView)
 
 v1_router = DefaultRouter()
 v1_router.register('users', UserViewSet, basename='users')
 v1_router.register('doctors', DoctorViewSet, basename='doctors')
 v1_router.register('rooms', RoomViewSet, basename='rooms')
 v1_router.register('furniture', FurnitureViewSet, basename='furniture')
+v1_router.register('user_room', UserRoomViewSet, basename='user-room')
+
+
 
 urlpatterns = [
     path("", include(v1_router.urls)),
@@ -27,6 +30,12 @@ urlpatterns += [
     path('puzzles_down/', PuzzlesDownView.as_view(), name='puzzles-down'),
     path('experience_up/', ExperienceUpView.as_view(), name='experience-up'),
 ]
+
+# Room
+urlpatterns += [
+    path('level_up_room/<int:user_room_id>/', LevelUpRoomView.as_view(), name='level_up_room'),
+]
+
 
 urlpatterns += [
     path(

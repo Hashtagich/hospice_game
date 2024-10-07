@@ -6,9 +6,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from api.v1.serializers.environment_serializer import (
-    RoomSerializer, FurnitureSerializer
+    RoomSerializer, FurnitureSerializer, UserRoomSerializerForGet, UserRoomSerializerForPost, LevelUpRoomSerializer
 )
-from environment.models import Room, Furniture
+from environment.models import Room, Furniture, UserRoom
 from users.permissions import IsAdmin, IsNotActive, IsNotBlocked, ReadOwnDataOnly
 
 
@@ -42,3 +42,75 @@ class FurnitureViewSet(viewsets.ReadOnlyModelViewSet):
     @extend_schema(summary="API для получения конкретной мебели по ID")
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
+
+
+@extend_schema(tags=['Комната-Пользователь'])
+class UserRoomViewSet(viewsets.ModelViewSet):
+    queryset = UserRoom.objects.all()
+    permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked]
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return UserRoomSerializerForGet
+        else:
+            return UserRoomSerializerForPost
+
+    @extend_schema(summary="API для получения всех комнат")
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+    @extend_schema(summary="API для получения конкретной комнаты по ID")
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)
+
+    @extend_schema(summary="API для создания новой комнаты")
+    def create(self, request, *args, **kwargs):
+        room_id = request.data.get('room')
+
+        if not Room.objects.filter(id=room_id).exists():
+            return Response({'error': 'Комната не найдена.'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)  # Передаем текущего пользователя
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @extend_schema(summary="API для обновления конкретной комнаты по ID")
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
+
+    @extend_schema(summary="API для частичного обновления конкретной комнаты по ID")
+    def partial_update(self, request, *args, **kwargs):
+        return super().partial_update(request, *args, **kwargs)
+
+
+@extend_schema(tags=['Комната-Пользователь'])
+class LevelUpRoomView(APIView):
+    permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked]
+    serializer_class = LevelUpRoomSerializer
+
+    @extend_schema(summary="API для повышения уровня комнаты за монеты")
+    def patch(self, request, user_room_id):
+        serializer = self.serializer_class(data=request.data)
+
+        if serializer.is_valid():
+            point = serializer.validated_data.get('point', 1)
+            money = serializer.validated_data.get('money', None)
+
+            try:
+                user_room = UserRoom.objects.get(id=user_room_id)
+            except UserRoom.DoesNotExist:
+                return Response({"error": "Комната не найдена или у вас нет прав на её изменение."},
+                                status=status.HTTP_404_NOT_FOUND)
+
+            try:
+                user_room.level_up(point=point, money=money)
+                user_room.save()
+
+                return Response({"message": f"Уровень комнаты повышен на {point} за {money} монет."},
+                                status=status.HTTP_200_OK)
+            except ValueError as e:
+                return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

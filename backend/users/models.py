@@ -150,6 +150,7 @@ class UserAttributes(models.Model):
             raise ValueError("Число должно быть строго больше 0.")
         else:
             self.level += point
+            self.save()
 
     def money_up(self, point: int = 1):
         """Метод увеличения валюты пользователя. Увеличивается на величину point, по дефолту = 1."""
@@ -157,11 +158,13 @@ class UserAttributes(models.Model):
             raise ValueError("Число должно быть строго больше 0.")
         else:
             self.money += point
+            self.save()
 
     def money_down(self, point: int = 1):
         """Метод уменьшения валюты пользователя. Уменьшается на величину point, по дефолту = 1."""
         if self.check_funds(currency=self.money, point=point):
             self.money -= point
+            self.save()
         else:
             raise ValueError("Недостаточно средств для вычитания этой суммы.")
 
@@ -171,11 +174,13 @@ class UserAttributes(models.Model):
             raise ValueError("Число должно быть строго больше 0.")
         else:
             self.puzzles += point
+            self.save()
 
     def puzzles_down(self, point: int = 1):
         """Метод уменьшения валюты пользователя. Уменьшается на величину point, по дефолту = 1."""
         if self.check_funds(currency=self.puzzles, point=point):
             self.puzzles -= point
+            self.save()
         else:
             raise ValueError("Недостаточно средств для вычитания этой суммы.")
 
@@ -191,6 +196,7 @@ class UserAttributes(models.Model):
             self.money_up(point=100)
             self.puzzles_up(point=1)
             self.level_up()
+            self.save()
 
 
 class Task(models.Model):

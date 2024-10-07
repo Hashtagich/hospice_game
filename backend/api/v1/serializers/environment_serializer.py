@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from environment.models import Room, Furniture, Categories
+from environment.models import Room, Furniture, Categories, UserRoom
 
 User = get_user_model()
 
@@ -27,3 +27,45 @@ class FurnitureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Furniture
         fields = ['id', 'name', 'categories', 'price', 'room', 'description']
+
+
+class UserRoomSerializerForGet(serializers.ModelSerializer):
+    user = serializers.CharField(source='user.username', read_only=True)
+    room = serializers.CharField(source='room.name', read_only=True)
+
+    class Meta:
+        model = UserRoom
+        fields = [
+            'user',
+            'room',
+            'level',
+            'max_furniture_count',
+            'max_medical_equipment_count',
+            'max_auxiliary_equipment_count',
+            'max_decor_elements_count'
+        ]
+
+
+class UserRoomSerializerForPost(serializers.ModelSerializer):
+    class Meta:
+        model = UserRoom
+        fields = [
+            'room',
+            'level',
+            'max_furniture_count',
+            'max_medical_equipment_count',
+            'max_auxiliary_equipment_count',
+            'max_decor_elements_count'
+        ]
+
+
+class LevelUpRoomSerializer(serializers.ModelSerializer):
+    point = serializers.IntegerField(default=1)
+    money = serializers.IntegerField(default=1)
+
+    class Meta:
+        model = UserRoom
+        fields = [
+            'point',
+            'money'
+        ]
