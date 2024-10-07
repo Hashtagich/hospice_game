@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.utils import timezone
+from .validators import _validate_username
 
 
 class UserManager(BaseUserManager):
+
     def _create_user(self, email, password, **kwargs):
         is_staff = kwargs.pop('is_staff', False)
         is_superuser = kwargs.pop('is_superuser', False)
@@ -40,9 +42,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     """Модель пользователя"""
     username = models.CharField(
         'Username',
-        max_length=128,
+        max_length=16,
         blank=True,
         unique=True,
+        validators=[_validate_username]
     )
 
     email = models.EmailField(
