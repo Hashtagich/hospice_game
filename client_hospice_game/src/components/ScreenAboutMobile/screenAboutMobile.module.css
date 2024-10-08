@@ -1,54 +1,61 @@
 .container {
-    padding: 0px 205px 0px 82px;
+    margin-top: 112px;
+    padding: 0px 141px 0px 134px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 1360px;
-    height: 352px;
-    border-radius: 32px;
-    background: linear-gradient(237.86deg, #78D5C1 30.71%, #B8ED75 87.53%);
+    width: 1440px;
+    height: 467px;
 }
 
 .imageMobile {
-    width: 397px;
-    height: 193px;
+    width: 631px;
+    height: 467px;
     background-image: url('../../images/phone.png');
 }
 
 .wrapperDescriptionMobileVersion {
-    width: 469px;
-    height: 232px;
+    width: 431px;
+    height: 268px;
 }
 
 .sectionName {
     margin: 0px;
-    font-family: 'PribambasRegular', sans-serif;
-    font-weight: 400;
-    font-size: 68px;
-    line-height: 68px;
-    color: #5833F0;
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 57.6px;
+    color: #333333;
 }
 
 .description {
-    margin-top: 30px;
+    margin-top: 20px;
     font-family: 'RobotoRegular', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: #465600;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 31.2px;
+    color: #333333;
 }
 
 .button {
-    margin-top: 28px;
-    width: 229px;
-    height: 60px;
-    border-radius: 32px;
-    color: #5833F0;
+    margin-top: 40px;
+    width: 208px;
+    height: 61px;
+    border-radius: 123px;
+    color: #333333;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 24px;
+    line-height: 28.8px;
     font-family: 'RobotoRegular', sans-serif;
-    background: #D0FA2A;
+    background: #DBEE28;
     cursor: pointer;
     border: none;
+}
+
+.button:hover {
+    background: #E6FA2B;
+}
+
+.button:active {
+    background: #D1FA2B;
 }

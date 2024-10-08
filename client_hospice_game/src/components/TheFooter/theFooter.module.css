@@ -1,0 +1,220 @@
+.footer {
+    margin: 113px 0px 60px 0px;
+    display: flex;
+    justify-content: center;
+    width: 1440px;
+    height: 380px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 1360px;
+    height: 380px;
+}
+
+.wrapperLogoAndInfo {
+    width: 456px;
+    height: 380px;
+}
+
+.wrapperNavigationAndInfo {
+    width: 777px;
+    height: 380px;
+}
+
+.button {
+    margin-top: 80px;
+    width: 225px;
+    height: 60px;
+    border-radius: 32px;
+    color: #F8F7FC;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: 'RobotoRegular', sans-serif;
+    background:  #7676E8;
+    cursor: pointer;
+    border: none;
+}
+
+.wrapperLinksIcons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 112px;
+    height: 24px;
+}
+
+.textFooter {
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555A65;
+}
+
+.logo {
+    width: 224.99px;
+    height: 130.33px;
+    background-image: url('../../svg/logoFooter.svg');
+}
+
+.textRuAndGlobus {
+    margin-top: 175px;
+    display: flex;
+    width: 310.23px;
+    height: 24px;
+}
+
+.globusIcon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../svg/global.svg');
+}
+
+.textRu {
+    margin: 0px 0px 0px 12px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    font-family: 'RobotoRegular', sans-serif;
+    color: #333333;
+}
+
+.policyInfo {
+    display: flex;
+    column-gap: 28px;
+}
+
+.textPolicy {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.2px;
+    font-family: 'RobotoRegular', sans-serif;
+    color: #333333;
+}
+
+.wrapperListsInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 777px;
+    height: 298px;
+}
+
+.listNavigationInfo {
+    width: 180px;
+    height: 298px;
+}
+
+.titleList {
+    margin: 0px;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 33.6px;
+    font-family: 'RobotoRegular', sans-serif;
+    color: #333333;
+}
+
+.ul {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.li {
+    margin-top: 25px;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    font-family: 'RobotoRegular', sans-serif;
+}
+
+.linkAncor {
+    text-decoration: none;
+    color: #333333;
+}
+
+.listCommunityInfo {
+    width: 166px;
+    height: 246px;
+}
+
+.wrapperItemComunity {
+    margin: 25px 0px 0px 0px;
+    display: flex;
+    width: 136px;
+    height: 24px;
+}
+
+.vkIcon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../svg/vkIcon.svg');
+    cursor: pointer;
+}
+
+.telegaIcon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../svg/telegramIcon.svg');
+    cursor: pointer;
+}
+
+.facebookIcon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../svg/facebookIcon.svg');
+    cursor: pointer;
+}
+
+.youtubeIcon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../svg/youtubeIcon.svg');
+    cursor: pointer;
+}
+
+.phoneFooterIcon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../svg/phoneFooterIcon.svg');
+    cursor: pointer;
+}
+
+.pismoFooterIcon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../svg/pismoFooterIcon.svg');
+    cursor: pointer;
+}
+
+.liComunity {
+    margin: 0px 0px 0px 12px;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    font-family: 'RobotoRegular', sans-serif;
+}
+
+.listLinkInfo {
+    width: 311px;
+    height: 200px;
+}
+
+.wrapperItemLinks {
+    margin: 25px 0px 0px 0px;
+    display: flex;
+    width: 277px;
+    height: 24px;
+}
+
+.addMarginTop {
+    margin-top: 40px;
+}
+
+.infoAboutGame {
+    margin: 51px 0px 0px 0px;
+}

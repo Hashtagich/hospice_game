@@ -1,0 +1,97 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 112px 0px 0px 0px;
+    width: 1440px;
+    height: 1054px;
+    background-color: #F0F4FC;
+}
+
+.title {
+    margin: 69px 0px 0px 0px;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 57.6px;
+    font-family: 'RobotoRegular', sans-serif;
+}
+
+.wrapperFeatures {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 76px;
+    row-gap: 44px;
+    margin-top: 76px;
+    width: 1360px;
+    height: 778px;
+}
+
+.wrapperCell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 401px;
+    height: 367px;
+}
+
+.iconCellPurchase {
+    margin-top: 44px;
+    width: 142px;
+    height: 142px;
+    background-image: url('../../svg/purchaseIcon.svg');
+}
+
+.iconCellLevelup {
+    margin-top: 44px;
+    width: 142px;
+    height: 142px;
+    background-image: url('../../svg/levelupIcon.svg');
+}
+
+.iconCellProcedure {
+    margin-top: 44px;
+    width: 142px;
+    height: 142px;
+    background-image: url('../../svg/procedureIcon.svg');
+}
+
+.iconCellIndividual {
+    margin-top: 44px;
+    width: 142px;
+    height: 142px;
+    background-image: url('../../svg/individualIcon.svg');
+}
+
+.iconCellMozikarehub {
+    margin-top: 44px;
+    width: 142px;
+    height: 142px;
+    background-image: url('../../svg/mozikarehabIcon.svg');
+}
+
+.iconCellFamily {
+    margin-top: 44px;
+    width: 142px;
+    height: 142px;
+    background-image: url('../../svg/familyIcon.svg');
+}
+
+.titleCell {
+    margin: 40px 0px 0px 0px;
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28.8px;
+    color: #333333;
+    text-align: center;
+}
+
+.subtitleCell {
+    margin-top: 20px;
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #333333;
+    text-align: center;
+}
