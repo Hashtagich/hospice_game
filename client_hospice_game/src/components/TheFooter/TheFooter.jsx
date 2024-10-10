@@ -28,7 +28,7 @@ const TheFooter = () => {
 								<li className={styles.li}><a className={styles.linkAncor} href='#main'>Главная</a></li>
 								<li className={styles.li}><a className={styles.linkAncor} href='#aboutgame'>Об игре</a></li>
 								<li className={styles.li}><a className={styles.linkAncor} href='#featuresgame'>Особенности</a></li>
-								<li className={styles.li}><a className={styles.linkAncor} href='#'>Геймплей</a></li>
+								<li className={styles.li}><a className={styles.linkAncor} href='#gameplay'>Геймплей</a></li>
 								<li className={styles.li}><a className={styles.linkAncor} href='#mobilegame'>Мобильная версия</a></li>
 							</ul>
 						</nav>

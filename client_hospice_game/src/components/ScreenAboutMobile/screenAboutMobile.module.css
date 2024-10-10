@@ -37,25 +37,57 @@
     color: #333333;
 }
 
+.bottomLine {
+    text-decoration: none;
+}
+
 .button {
+    display: none;
+}
+
+.buttondisable {
+    display: block;
     margin-top: 40px;
     width: 208px;
     height: 61px;
     border-radius: 123px;
-    color: #333333;
-    font-weight: 600;
+    color: white;
+    font-weight: 500;
     font-size: 24px;
     line-height: 28.8px;
     font-family: 'RobotoRegular', sans-serif;
-    background: #DBEE28;
-    cursor: pointer;
+    background: #bdbdbb;
     border: none;
 }
 
-.button:hover {
-    background: #E6FA2B;
-}
 
-.button:active {
-    background: #D1FA2B;
+@media (min-width: 359px) and (max-width: 1235px) {
+
+    .button {
+        display: block;
+        width: 208px;
+        height: 31px;
+        border-radius: 123px;
+        color: #333333;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 28.8px;
+        font-family: 'RobotoRegular', sans-serif;
+        background: #DBEE28;
+        border: none;
+    }
+
+    .buttondisable {
+        display: none;
+    }
+
+    .bottomLine {
+        text-decoration: none;
+    }
+
+    .button:active {
+        background: #D1FA2B;
+    }
+
+    
 }

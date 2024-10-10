@@ -7,7 +7,12 @@
     border-radius: 0px 0px 32px 32px;
 }
 
-.buttonLetsplay {
+.bottomLine {
+    text-decoration: none;
+}
+
+.button {
+    display: block;
     width: 193px;
     height: 62px;
     border-radius: 158px;
@@ -22,11 +27,15 @@
     border: none;
 }
 
-.buttonLetsplay:hover {
+.buttonDisable {
+    display: none;
+}
+
+.button:hover {
     background: #4F4CE2;
 }
 
-.buttonLetsplay:active {
+.button:active {
     background: #4D4ACC;
 }
 
@@ -90,6 +99,30 @@
     font-size: 24px;
     line-height: 31.2px;
     font-family: 'RobotoRegular', sans-serif;
+}
+
+
+@media (min-width: 359px) and (max-width: 1235px) {
+
+    .buttonDisable {
+        display: block;
+        width: 193px;
+        height: 62px;
+        border-radius: 158px;
+        color: white;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 23.44px;
+        font-family: 'RobotoRegular', sans-serif;
+        background: #bdbdbb;
+        line-height: 28.8px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .button {
+        display: none;
+    }
 }
 
 
