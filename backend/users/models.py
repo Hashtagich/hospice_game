@@ -190,12 +190,15 @@ class UserAttributes(models.Model):
         Как только становиться больше или равен 1000 то уменьшается на 100 и автоматически повышает уровень пользователя
         на 1 и даёт 100 валюты и 1 пазл.
         """
-        self.experience += point
-        if self.experience >= 1000:
-            self.experience -= 1000
-            self.money_up(point=100)
-            self.puzzles_up(point=1)
-            self.level_up()
+        if self.check_point(point):
+            raise ValueError("Число должно быть строго больше 0.")
+        else:
+            self.experience += point
+            if self.experience >= 1000:
+                self.experience -= 1000
+                self.money_up(point=100)
+                self.puzzles_up(point=1)
+                self.level_up()
             self.save()
 
 
