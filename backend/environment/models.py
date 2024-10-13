@@ -88,7 +88,7 @@ class Furniture(models.Model):
     )
 
     def __str__(self):
-        return f'{self.name} {self.price}'
+        return f'{self.name} - {self.price} монет'
 
     class Meta:
         verbose_name = 'Мебель'
@@ -172,6 +172,17 @@ class UserFurniture(models.Model):
         verbose_name='На складе',
         default=False
     )
+
+    accommodation_room = models.ForeignKey(
+        UserRoom,
+        on_delete=models.SET_NULL,
+        verbose_name='Фактическая комната размещения',
+        null=True,
+        blank=True
+    )
+
+    def __str__(self):
+        return f'{self.user.username} - {self.furniture.name}'
 
     class Meta:
         verbose_name = 'Мебель пользователя'

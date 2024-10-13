@@ -3,8 +3,10 @@ from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView, Spe
 from rest_framework.routers import DefaultRouter
 from .views.user_view import (UserViewSet, LevelUpView, MoneyUpView, PuzzlesUpView, ExperienceUpView, PuzzlesDownView,
                               MoneyDownView)
-from .views.npc_view import (DoctorViewSet)
-from .views.environment_view import (RoomViewSet, FurnitureViewSet, UserRoomViewSet, LevelUpRoomView)
+from .views.npc_view import (DoctorViewSet, UserDoctorViewSet, LevelUpDoctorView)
+from .views.environment_view import (RoomViewSet, FurnitureViewSet, UserRoomViewSet, LevelUpRoomView,
+                                     UserFurnitureViewSet)
+
 
 v1_router = DefaultRouter()
 v1_router.register('users', UserViewSet, basename='users')
@@ -12,7 +14,8 @@ v1_router.register('doctors', DoctorViewSet, basename='doctors')
 v1_router.register('rooms', RoomViewSet, basename='rooms')
 v1_router.register('furniture', FurnitureViewSet, basename='furniture')
 v1_router.register('user_room', UserRoomViewSet, basename='user-room')
-
+v1_router.register('user_doctor', UserDoctorViewSet, basename='user-doctor')
+v1_router.register('user_furniture', UserFurnitureViewSet, basename='user-furniture')
 
 
 urlpatterns = [
@@ -36,6 +39,10 @@ urlpatterns += [
     path('level_up_room/<int:user_room_id>/', LevelUpRoomView.as_view(), name='level_up_room'),
 ]
 
+# Doctor
+urlpatterns += [
+    path('level_up_doctor/<int:user_doctor_id>/', LevelUpDoctorView.as_view(), name='level_up_doctor'),
+]
 
 urlpatterns += [
     path(

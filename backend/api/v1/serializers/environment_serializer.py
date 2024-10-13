@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from environment.models import Room, Furniture, Categories, UserRoom
+from environment.models import Room, Furniture, Categories, UserRoom, UserFurniture
 
 User = get_user_model()
 
@@ -69,3 +69,37 @@ class LevelUpRoomSerializer(serializers.ModelSerializer):
             'point',
             'money'
         ]
+
+
+class UserFurnitureSerializerForGet(serializers.ModelSerializer):
+    user = serializers.CharField(source='user.username', read_only=True)
+    furniture = FurnitureSerializer(read_only=True)
+
+    class Meta:
+        model = UserFurniture
+        fields = [
+            'user',
+            'furniture',
+            'in_warehouse'
+        ]
+
+
+class UserFurnitureSerializerForPost(serializers.ModelSerializer):
+    class Meta:
+        model = UserFurniture
+        fields = [
+            'furniture',
+            'in_warehouse'
+        ]
+
+    def validate(self, attrs):
+        user = self.context['request'].user
+
+        furniture = attrs.get('furniture')
+
+        if furniture.categories.name in ('Специально медицинское оборудование', 'Вспомогательное оборудование'):
+
+            if not UserRoom.objects.filter(user=user, room=furniture.room).exists():
+                raise serializers.ValidationError("У пользователя нет комнаты для данной мебели.")
+
+        return attrs

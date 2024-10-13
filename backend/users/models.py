@@ -42,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """Модель пользователя"""
     username = models.CharField(
         'Username',
-        max_length=16,
+        max_length=15,
         blank=True,
         unique=True,
         validators=[_validate_username]

@@ -19,7 +19,7 @@ class LowercaseValidator:
         if not search(r'[a-z]', password):
             raise ValidationError(
                 "Пароль должен содержать хотя бы одну строчную латинскую букву.",
-                code='password_no_upper',
+                code='password_no_lower',
             )
 
     def get_help_text(self):
@@ -43,9 +43,18 @@ def _validate_username(username):
     if not (4 <= len(username) <= 15):
         raise ValidationError("Username должен быть от 4 до 15 символов.")
 
+    if not search(r'[a-z]', username):
+        raise ValidationError(
+            "Username должен содержать хотя бы одну строчную латинскую букву."
+        )
+
+    if not search(r'[A-Z]', username):
+        raise ValidationError(
+            "Username должен содержать хотя бы одну заглавную латинскую букву."
+        )
+
     if match("^\d+$", username):
         raise ValidationError("Username не должен содержать только цифры.")
 
-    # Проверка на наличие специальных символов: разрешены буквы, цифры, _, а также кириллица
-    if not match("[a-zA-Zа-яА-ЯёЁ0-9_]*$", username):
-        raise ValidationError("Username может содержать только буквы (латиница и кириллица), цифры и символ '_'.")
+    if not match("[a-zA-Zа-яА-ЯёЁ]*$", username):
+        raise ValidationError("Username не может состоять только из цифр и спец символов.")

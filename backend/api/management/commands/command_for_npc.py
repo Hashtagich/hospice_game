@@ -21,7 +21,6 @@ def create_procedure_db():
                 name=db['name'],
                 description=db['description'],
                 categories=Categories(id=int(db['categories']) + first_category_id),
-                effectiveness=db['effectiveness'],
                 execution_time=db['execution_time'],
             ).save()
 

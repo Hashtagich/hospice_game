@@ -5,6 +5,13 @@ from users.models import UserAttributes
 User = get_user_model()
 
 
+def validate_user_money(user, amount):
+    """Функция-валидатор для проверки кол-ва монет у пользователя для покупки"""
+    user_attributes = UserAttributes.objects.get(user=user)
+    if user_attributes.money < amount:
+        raise serializers.ValidationError("Недостаточно средств для выполнения этой операции.")
+
+
 class UserAttributesSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAttributes

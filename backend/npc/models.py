@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import User
-from environment.models import Room
+from environment.models import Room, UserRoom
 
 
 # Create your models here.
@@ -164,6 +164,11 @@ class Doctor(models.Model):
         null=True
     )
 
+    price = models.PositiveIntegerField(
+        verbose_name='Стоимость',
+        default=1
+    )
+
     room = models.ForeignKey(
         Room,
         related_name='doctor',
@@ -174,7 +179,7 @@ class Doctor(models.Model):
     )
 
     def __str__(self):
-        return f'{self.surname} {self.patronymic} {self.name} - {self.profession}'
+        return f'{self.surname} {self.name} {self.patronymic} - {self.profession}'
 
     class Meta:
         verbose_name = 'Врач'
@@ -279,6 +284,14 @@ class UserDoctor(models.Model):
         default=1
     )
 
+    accommodation_room = models.ForeignKey(
+        UserRoom,
+        on_delete=models.SET_NULL,
+        verbose_name='Фактическая комната размещения',
+        null=True,  # Добавлено для разрешения NULL
+        blank=True   # Это также допустимо, если вы хотите, чтобы поле не было обязательным
+    )
+
     def __str__(self):
         return f'{self.user.username} - {self.doctor}'
 
@@ -287,7 +300,12 @@ class UserDoctor(models.Model):
         verbose_name_plural = 'Врачи пользователей'
         ordering = ['id']
 
-    def level_up(self, point: int = 1):
+    def level_up(self, point: int = 1, money: int = 1):
         """Метод увеличения уровня и занятости врача. Увеличивается на величину point, по дефолту = 1."""
-        self.level += point
-        self.busyness += point
+        user_attributes = self.user.attributes
+        user_attributes.money_down(point=money)
+        if user_attributes.check_point(point):
+            raise ValueError("Число должно быть строго больше 0.")
+        else:
+            self.level += point
+            self.busyness += point
