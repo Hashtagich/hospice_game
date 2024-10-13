@@ -195,10 +195,12 @@ class UserAttributes(models.Model):
         else:
             self.experience += point
             if self.experience >= 1000:
-                self.experience -= 1000
-                self.money_up(point=100)
-                self.puzzles_up(point=1)
-                self.level_up()
+                k = self.experience // 1000
+                self.experience = self.experience % 1000
+
+                self.money_up(point=100*k)
+                self.puzzles_up(point=1*k)
+                self.level_up(point=1*k)
             self.save()
 
 
