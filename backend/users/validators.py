@@ -43,18 +43,16 @@ def _validate_username(username):
     if not (4 <= len(username) <= 15):
         raise ValidationError("Username должен быть от 4 до 15 символов.")
 
-    if not search(r'[a-z]', username):
+    if not search(r'[a-zA-Zа-яА-ЯёЁ]', username):
         raise ValidationError(
-            "Username должен содержать хотя бы одну строчную латинскую букву."
-        )
-
-    if not search(r'[A-Z]', username):
-        raise ValidationError(
-            "Username должен содержать хотя бы одну заглавную латинскую букву."
+            "Username должен содержать хотя бы одну строчную или заглавную букву латиницы или кириллицы."
         )
 
     if match("^\d+$", username):
         raise ValidationError("Username не должен содержать только цифры.")
 
-    if not match("[a-zA-Zа-яА-ЯёЁ]*$", username):
-        raise ValidationError("Username не может состоять только из цифр и спец символов.")
+    if match("^[\W_]+$", username):
+        raise ValidationError("Username не должен состоять только из спецсимволов ")
+
+    if match("^[\W\d_]+$", username):
+        raise ValidationError("Username не должен состоять только из спецсимволов и цифр.")
