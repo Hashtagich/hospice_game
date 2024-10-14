@@ -1,11 +1,11 @@
 import styles from './theFooter.module.css';
-import Button from '../Button/Button';
 
 
 const TheFooter = () => {
     return (
         <footer className={styles.footer}>
 			<div className={styles.container}>
+				<div className={styles.wrapperLogoForMobile}></div>
 				<div className={styles.wrapperLogoAndInfo}>
 					<div className={styles.logoAndRu}>
 						<div className={styles.logo}></div>
@@ -67,11 +67,20 @@ const TheFooter = () => {
 							</div>
 						</div>
 					</div>
+					<div className={styles.textRuAndGlobusForMobile}>
+						<div className={styles.globusIcon}></div>
+						<h4 className={styles.textRu}>Русский (RU)</h4>
+					</div>
+					<div className={styles.policyInfoForMobile}>
+						<h4 className={styles.textPolicy}>© Замок Заботы, 2024</h4>
+						<h4 className={styles.textPolicy}>Конфиденциальность</h4>
+						<h4 className={styles.textPolicy}>Условия</h4>
+					</div>
 					<h4 className={styles.textPolicy+' '+styles.infoAboutGame}>Игра “Замок Заботы” является собственностью детского реабилитационно центра “Мозайка”</h4>
 				</div>
 			</div>
 		</footer>
-        )
+    )
 };
 
 export default TheFooter;

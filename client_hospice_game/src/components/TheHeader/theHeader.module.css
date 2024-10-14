@@ -55,3 +55,42 @@
     height: 39.23px;
     background-image: url('../../svg/Logo.svg');
 }
+
+
+@media (min-width: 359px) and (max-width: 1235px) {
+
+    .header {
+        display: flex;
+        justify-content: center;
+        width: 430px;
+        height: 77px;
+    }
+
+    .container {
+        margin: 0px;
+        padding: 0px 14.5px 0px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 430px;
+        height: 77px;
+        background-color: white;
+        border-radius: 0px;
+    }
+
+    .nav {
+        width: 44px;
+        height: 44px;
+        background-image: url('../../svg/menuBurger.svg');
+    }
+
+    .wrapperNavigation {
+        display: none;
+    }
+
+    .wrapperLogo {
+        width: 50px;
+        height: 49px;
+        background-image: url('../../svg/logoMobile.svg');
+    }
+}

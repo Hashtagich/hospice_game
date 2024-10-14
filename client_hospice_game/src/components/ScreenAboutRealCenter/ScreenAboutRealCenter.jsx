@@ -7,8 +7,8 @@ const ScreenAboutRealCenter = () => {
         <section id='realcenter' className={styles.container}>
             <div className={styles.wrapperDescriptionAndButton}>
                 <h1 className={styles.nameSection}>Детский Реабилитацонный<br/>Центр «Мозайка»</h1>
-                <p className={styles.descriptionAboutMazaika}>Вы можете помочь реальным детям<br/>даже не заходя в игру</p>
-                <a href='https://detireb.ru/' target='_blank'><Button className={styles.button} nameButton='Помочь'/></a>
+                <p className={styles.descriptionAboutMazaika}>Вы можете помочь реальным детям даже не заходя в игру</p>
+                <a href='https://detireb.ru/' rel="noopener noreferrer" target='_blank'><Button className={styles.button} nameButton='Помочь'/></a>
             </div>
             <div className={styles.wrapperCenterLogoSvg}></div>
         </section>

@@ -1,20 +1,25 @@
 .container {
-    margin-top: 112px;
-    padding: 0px 141px 0px 134px;
+    margin-top: 187px;
+    padding: 0px 121px 0px 122px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
     width: 1440px;
-    height: 467px;
+    height: 392px;
+}
+
+.image {
+    display: block;
+    width: 700px;
+    height: 337px;
 }
 
 .imageMobile {
-    width: 631px;
-    height: 467px;
-    background-image: url('../../images/phone.png');
+    display: none;
 }
 
 .wrapperDescriptionMobileVersion {
+    margin-top: 30px;
     width: 431px;
     height: 268px;
 }
@@ -60,13 +65,59 @@
     border: none;
 }
 
+.infoDisabledButton {
+    display: block;
+    margin: 8px 0px 0px 28px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 15.6px;
+    font-family: 'RobotoRegular', sans-serif;
+    color: #C5C3CF;
+}
+
 
 @media (min-width: 359px) and (max-width: 1235px) {
 
+    .container {
+        margin-top: 64px;
+        padding: 0px 0px 0px 0px;
+        display: flex;
+        flex-direction: column;
+        width: 390px;
+        height: 528px;
+    }
+
+    .wrapperDescriptionMobileVersion {
+        margin: 0px;
+        width: 390px;
+        height: 110px;
+    }
+
+    .sectionName {
+        margin: 0px;
+        font-family: 'RobotoRegular', sans-serif;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 38.4px;
+        color: #333333;
+        text-align: center;
+    }
+
+    .description {
+        margin-top: 20px;
+        font-family: 'RobotoRegular', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        color: #333333;
+        text-align: center;
+    }
+
     .button {
         display: block;
-        width: 208px;
-        height: 31px;
+        margin: 0 auto;
+        width: 330px;
+        height: 61px;
         border-radius: 123px;
         color: #333333;
         font-weight: 600;
@@ -89,5 +140,18 @@
         background: #D1FA2B;
     }
 
-    
+    .infoDisabledButton {
+        display: none;
+    }
+
+    .image {
+        display: none;
+    }
+
+    .imageMobile {
+        display: block;
+        margin: 74px auto;
+        width: 390px;
+        height: 188px;
+    }
 }

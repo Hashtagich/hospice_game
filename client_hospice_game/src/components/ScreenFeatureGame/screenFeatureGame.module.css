@@ -95,3 +95,109 @@
     color: #333333;
     text-align: center;
 }
+
+
+@media (min-width: 359px) and (max-width: 1235px) {
+
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 125px 0px 0px 0px;
+        width: 430px;
+        height: 2063px;
+        background-color: #F0F4FC;
+    }
+
+    .title {
+        width: 277px;
+        height: 76px;
+        margin: 39px 0px 0px 0px;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 38.4px;
+        font-family: 'RobotoRegular', sans-serif;
+        text-align: center;
+    }
+
+    .wrapperFeatures {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 18px 0px 0px 0px;
+        row-gap: 60px;
+        width: 383.72px;
+        height: 1875px;
+    }
+
+    .wrapperCell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 383.72px;
+        height: 260px;
+    }
+
+    .iconCellPurchase {
+        margin-top: 0px;
+        width: 122px;
+        height: 122px;
+        background-image: url('../../svg/purchaseIconMobile.svg');
+    }
+    
+    .iconCellLevelup {
+        margin-top: 0px;
+        width: 122px;
+        height: 122px;
+        background-image: url('../../svg/levelupIconMobile.svg');
+    }
+    
+    .iconCellProcedure {
+        margin-top: 0px;
+        width: 122px;
+        height: 122px;
+        background-image: url('../../svg/procedureIconMobile.svg');
+    }
+    
+    .iconCellIndividual {
+        margin-top: 0px;
+        width: 122px;
+        height: 122px;
+        background-image: url('../../svg/imdividualIconMobile.svg');
+    }
+    
+    .iconCellMozikarehub {
+        margin-top: 0px;
+        width: 122px;
+        height: 122px;
+        background-image: url('../../svg/mozikarehabIconMobile.svg');
+    }
+    
+    .iconCellFamily {
+        margin-top: 0px;
+        width: 122px;
+        height: 122px;
+        background-image: url('../../svg/familyIconMobile.svg');
+    }
+
+    .titleCell {
+        margin: 15px 0px 0px 0px;
+        font-family: 'RobotoRegular', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 28.8px;
+        color: #333333;
+        text-align: center;
+    }
+    
+    .subtitleCell {
+        margin: 0px;
+        font-family: 'RobotoRegular', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        color: #333333;
+        text-align: center;
+    }
+}

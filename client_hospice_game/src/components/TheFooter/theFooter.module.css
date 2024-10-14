@@ -14,8 +14,13 @@
 }
 
 .wrapperLogoAndInfo {
+    display: block;
     width: 456px;
     height: 380px;
+}
+
+.wrapperLogoAndInfoForMobile {
+    display: none;
 }
 
 .wrapperNavigationAndInfo {
@@ -67,6 +72,10 @@
     height: 24px;
 }
 
+.textRuAndGlobusForMobile {
+    display: none;
+}
+
 .globusIcon {
     width: 24px;
     height: 24px;
@@ -85,6 +94,10 @@
 .policyInfo {
     display: flex;
     column-gap: 28px;
+}
+
+.policyInfoForMobile {
+    display: none;
 }
 
 .textPolicy {
@@ -117,7 +130,6 @@
 }
 
 .ul {
-
     padding: 0px;
     display: flex;
     flex-direction: column;
@@ -222,4 +234,63 @@
 
 .infoAboutGame {
     margin: 51px 0px 0px 0px;
+}
+
+@media (min-width: 359px) and (max-width: 1235px) {
+
+    .wrapperLogoAndInfo {
+        display: none;
+    }
+
+    .wrapperLogoForMobile {
+        display: block;
+        margin-bottom: 88px;
+        width: 164px;
+        height: 103.37px;
+        background-image: url('../../svg/logoFooterForMobile.svg');
+    }
+
+    .footer {
+        margin: 68px 0px 74px 0px;
+        width: 430px;
+        height: 1400px;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 390px;
+        height: 1400px;
+    }
+
+    .wrapperNavigationAndInfo {
+        width: 390px;
+        height: 898px;
+    }
+
+    .wrapperListsInfo {
+        display: flex;
+        flex-direction: column;
+        width: 390px;
+        height: 898px;
+    }
+
+    .textRuAndGlobusForMobile {
+        margin-top: 68px;
+        display: flex;
+        width: 310.23px;
+        height: 24px;
+    }
+
+    .policyInfoForMobile {
+        margin-top: 4px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .textPolicy {
+        margin: 28px 0px 0px 0px ;
+    }
 }

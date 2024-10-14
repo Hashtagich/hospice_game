@@ -1,6 +1,6 @@
 import styles from './screenAboutGameplay.module.css';
-//import Slider from '../Slider/Slider';
 import Swiper from '../Swiper/Swiper';
+import SwiperMobile from '../SwiperMobile/SwiperMobile';
 
 
 const ScreenAboutGameplay = () => {
@@ -11,6 +11,9 @@ const ScreenAboutGameplay = () => {
                 <h1 className={styles.sectionName}>Геймплей</h1>
                 <div className={styles.wrapperSlider}>
                     <Swiper/>
+                </div>
+                <div className={styles.wrapperSliderMobile}>
+                    <SwiperMobile/>
                 </div>
             </div>
         </section>
