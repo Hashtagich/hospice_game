@@ -1,0 +1,82 @@
+.listnavigation {
+    display: none;
+}
+
+
+@media (min-width: 359px) and (max-width: 1235px) {
+
+    .container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 69px 20px 113px 20px;
+        top: 14px;
+        left: -372px;
+        width: 431px;
+        height: 758px;
+        background-color: white;
+        z-index: 22;
+    }
+
+    .listnavigation {
+        display: flex;
+        flex-direction: column;
+        row-gap: 39px;
+        padding: 0px;
+        margin: 0px;
+        width: 248px;
+        height: 319px;
+    }
+
+    .listIconsLink {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 224px;
+        height: 32px;
+    }
+
+    .vkIcon {
+        width: 32px;
+        height: 32px;
+        background-image: url('../../svg/vkBurger.svg');
+    }
+
+    .telegaIcon {
+        width: 32px;
+        height: 32px;
+        background-image: url('../../svg/telegaBurger.svg');
+    }
+
+    .facebookIcon {
+        width: 32px;
+        height: 32px;
+        background-image: url('../../svg/faceBurger.svg');
+    }
+
+    .youtubeIcon {
+        width: 32px;
+        height: 32px;
+        background-image: url('../../svg/youtubeBurger.svg');
+    }
+
+    .li {
+        margin: 0px;
+        list-style: none;
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 31.2px;
+        font-family: 'RobotoRegular', sans-serif;
+    }
+    
+    .linkAncor {
+        text-decoration: none;
+        color: #333333;
+    }
+}
+
+
+
+
+

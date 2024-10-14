@@ -17,8 +17,17 @@
 }
 
 .nav {
+    display: block;
     width: 639px;
     height: 39.23px;
+}
+
+.navburger {
+    display: none;
+}
+
+.buttonBurger {
+    display: none;
 }
 
 .wrapperNavigation {
@@ -79,9 +88,27 @@
     }
 
     .nav {
+        display: none;
+    }
+
+    .navburger {
+        display: block;
         width: 44px;
         height: 44px;
         background-image: url('../../svg/menuBurger.svg');
+    }
+
+    .cross {
+        width: 44px;
+        height: 44px;
+        background-image: url('../../svg/cross.svg');
+    }
+
+    .buttonBurger {
+        display: block;
+        width: 44px;
+        height: 44px;
+        opacity: 0;
     }
 
     .wrapperNavigation {
