@@ -16,7 +16,6 @@ const ScreenMain = () => {
                 <div className={styles.wrapperVideo}>
                     <video poster="../../svg/backVideo" muted className={styles.videoPlayer} src="https://videos.pexels.com/video-files/1481903/1481903-sd_640_360_25fps.mp4" controls>
                     </video>
-                    <div className={styles.svgPopugai}></div>
                 </div>
                 <Button className={styles.buttonDisable} nameButton='Играть'/>
                 <h3 className={styles.infoDisabledButton}>Работает на компьютере</h3>

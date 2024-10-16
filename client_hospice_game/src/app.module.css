@@ -3,3 +3,13 @@
     flex-direction: column;
     align-items: center;
 }
+
+@media (min-width: 359px) and (max-width: 1235px) {
+    .main {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}

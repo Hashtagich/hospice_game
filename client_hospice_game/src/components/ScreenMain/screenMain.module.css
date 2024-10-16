@@ -69,15 +69,6 @@
     border-radius: 32px;
 }
 
-.svgPopugai {
-    position: relative;
-    top: -170px;
-    left: 390px;
-    width: 174px;
-    height: 134px;
-    background-image: url('../../svg/Popugai.svg');
-}
-
 .wrapperInfo {
     width: 601px;
     height: 198px;
@@ -110,10 +101,12 @@
 @media (min-width: 359px) and (max-width: 1235px) {
 
     .container {
+        display: flex;
+        justify-content: center;
         margin: 0px 0px 0px 0px;
         padding: 0px 0px 97px 0px;
-        width: 430px;
-        height: 754px;
+        width: 100%;
+        height: 605px;
         background-color: #C2D935;
         border-radius: 0px 0px 36px 36px;
     }
@@ -124,54 +117,54 @@
         align-items: center;
         justify-content: start;
         padding: 0px 32px 0px 32px;
-        width: 430px;
-        height: 754px;
+        width: 100%;
+        height: 605px;
     }
 
     .wrapperInfoAndButton {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 430px;
-        height: 321px;
+        width: 100%;
+        height: 152px;
     }
 
     .wrapperInfo {
-        width: 390px;
-        height: 180px;
+        width: 320px;
+        height: 152px;
     }
 
     .title {
-        margin: 60px 0px 0px 0px;
+        margin: 22px 0px 0px 0px;
         color: #333333;
         font-weight: 600;
-        font-size: 32px;
-        line-height: 38.4px;
+        font-size: 26px;
+        line-height: 31.2px;
         font-family: 'RobotoRegular', sans-serif;
         text-align: center;
     }
     
     .subTitle {
-        margin: 20px 0px 0px 0px;
-        width: 390px;
+        margin: 19px 0px 0px 0px;
+        width: 320px;
         color: #333333;
         font-weight: 600;
-        font-size: 24px;
-        line-height: 28px;
+        font-size: 20px;
+        line-height: 23.44px;
         font-family: 'RobotoRegular', sans-serif;
         text-align: center;
     }
 
     .wrapperVideo {
-        margin: 0px 0px 0px 0px;
-        width: 390px;
-        height: 216px;
+        margin: 70px 0px 0px 0px;
+        width: 320px;
+        height: 180px;
     }
 
     .videoPlayer {
         margin: 0px 0px 0px 0px;
-        width: 390px;
-        height: 220px;
+        width: 320px;
+        height: 180px;
         background-image: url('../../svg/backVideoMobile.svg');
         background-size: cover;
         border-radius: 32px;
@@ -183,8 +176,8 @@
 
     .buttonDisable {
         display: block;
-        margin-top: 40px;
-        width: 330px;
+        margin-top: 36px;
+        width: 320px;
         height: 61px;
         border-radius: 123px;
         color: white;

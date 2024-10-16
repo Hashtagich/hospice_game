@@ -103,18 +103,18 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        margin: 125px 0px 0px 0px;
-        width: 430px;
-        height: 2063px;
+        margin: 60px 0px 0px 0px;
+        width: 100%;
+        height: 1790px;
         background-color: #F0F4FC;
     }
 
     .title {
-        width: 277px;
+        width: 260px;
         height: 76px;
         margin: 39px 0px 0px 0px;
         font-size: 32px;
-        font-weight: 500;
+        font-weight: 600;
         line-height: 38.4px;
         font-family: 'RobotoRegular', sans-serif;
         text-align: center;
@@ -124,10 +124,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 18px 0px 0px 0px;
+        margin: 20px 0px 0px 0px;
         row-gap: 60px;
-        width: 383.72px;
-        height: 1875px;
+        width: 360px;
+        height: 1652px;
     }
 
     .wrapperCell {
@@ -135,54 +135,54 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        width: 383.72px;
-        height: 260px;
+        width: 360px;
+        height: 217px;
     }
 
     .iconCellPurchase {
         margin-top: 0px;
-        width: 122px;
-        height: 122px;
+        width: 80px;
+        height: 80px;
         background-image: url('../../svg/purchaseIconMobile.svg');
     }
     
     .iconCellLevelup {
         margin-top: 0px;
-        width: 122px;
-        height: 122px;
+        width: 80px;
+        height: 80px;
         background-image: url('../../svg/levelupIconMobile.svg');
     }
     
     .iconCellProcedure {
         margin-top: 0px;
-        width: 122px;
-        height: 122px;
+        width: 80px;
+        height: 80px;
         background-image: url('../../svg/procedureIconMobile.svg');
     }
     
     .iconCellIndividual {
         margin-top: 0px;
-        width: 122px;
-        height: 122px;
+        width: 80px;
+        height: 80px;
         background-image: url('../../svg/imdividualIconMobile.svg');
     }
     
     .iconCellMozikarehub {
         margin-top: 0px;
-        width: 122px;
-        height: 122px;
+        width: 80px;
+        height: 80px;
         background-image: url('../../svg/mozikarehabIconMobile.svg');
     }
     
     .iconCellFamily {
         margin-top: 0px;
-        width: 122px;
-        height: 122px;
+        width: 80px;
+        height: 80px;
         background-image: url('../../svg/familyIconMobile.svg');
     }
 
     .titleCell {
-        margin: 15px 0px 0px 0px;
+        margin: 20px 0px 0px 0px;
         font-family: 'RobotoRegular', sans-serif;
         font-weight: 600;
         font-size: 24px;

@@ -79,17 +79,18 @@
 @media (min-width: 359px) and (max-width: 1235px) {
 
     .container {
-        margin-top: 64px;
+        margin-top: 60px;
         padding: 0px 0px 0px 0px;
         display: flex;
         flex-direction: column;
-        width: 390px;
-        height: 528px;
+        align-items: center;
+        width: 100%;
+        height: 532px;
     }
 
     .wrapperDescriptionMobileVersion {
         margin: 0px;
-        width: 390px;
+        width: 320px;
         height: 110px;
     }
 
@@ -104,7 +105,7 @@
     }
 
     .description {
-        margin-top: 20px;
+        margin-top: 24px;
         font-family: 'RobotoRegular', sans-serif;
         font-weight: 600;
         font-size: 20px;
@@ -116,7 +117,7 @@
     .button {
         display: block;
         margin: 0 auto;
-        width: 330px;
+        width: 320px;
         height: 61px;
         border-radius: 123px;
         color: #333333;
@@ -150,8 +151,8 @@
 
     .imageMobile {
         display: block;
-        margin: 74px auto;
-        width: 390px;
-        height: 188px;
+        margin: 70px auto;
+        width: 320px;
+        height: 162px;
     }
 }
