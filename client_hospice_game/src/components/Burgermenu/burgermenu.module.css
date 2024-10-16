@@ -69,6 +69,10 @@
         line-height: 31.2px;
         font-family: 'RobotoRegular', sans-serif;
     }
+
+    .li:hover {
+        font-size: 28px;
+    }
     
     .linkAncor {
         text-decoration: none;
