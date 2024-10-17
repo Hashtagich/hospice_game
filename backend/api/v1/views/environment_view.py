@@ -4,13 +4,15 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.decorators import action
 
 from api.v1.serializers.environment_serializer import (
     RoomSerializer, FurnitureSerializer, UserRoomSerializerForGet, UserRoomSerializerForPost, LevelUpRoomSerializer,
-    UserFurnitureSerializerForGet, UserFurnitureSerializerForPost
+    UserFurnitureSerializerForGet, UserFurnitureSerializerForPost, PlaceFurnitureSerializer
 )
 from environment.models import Room, Furniture, UserRoom, UserFurniture
 from users.permissions import IsAdmin, IsNotActive, IsNotBlocked, ReadOwnDataOnly
+from users.models import UserAttributes
 
 
 @extend_schema(tags=['Комнаты'])
@@ -138,6 +140,8 @@ class UserFurnitureViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return UserFurnitureSerializerForGet
+        elif self.request.method in ['PUT', 'PATCH']:
+            return PlaceFurnitureSerializer
         else:
             return UserFurnitureSerializerForPost
 
@@ -149,13 +153,64 @@ class UserFurnitureViewSet(viewsets.ModelViewSet):
     def retrieve(self, request, *args, **kwargs):
         return super().retrieve(request, *args, **kwargs)
 
-    @extend_schema(summary="API для обновления конкретной мебели по ID")
+    @extend_schema(exclude=True)
     def update(self, request, *args, **kwargs):
-        return super().update(request, *args, **kwargs)
+        return Response({'error': 'Метод обновления недоступен.'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-    @extend_schema(summary="API для частичного обновления конкретной мебели по ID")
+    @extend_schema(summary="API для частичного редактирования/размещения в комнате или отправки на склад мебели по ID")
     def partial_update(self, request, *args, **kwargs):
-        return super().partial_update(request, *args, **kwargs)
+        instance = self.get_object()
+
+        if not instance.in_warehouse:
+            instance.in_warehouse = True
+            instance.accommodation_room = None
+            instance.save()  # Сохраняем изменения
+            return Response({'message': 'Статус in_warehouse был обновлён на True, accommodation_room очищен.'},
+                            status=status.HTTP_200_OK)
+
+        accommodation_room = request.data.get('accommodation_room')
+
+        if accommodation_room:
+            user = request.user
+            try:
+                user_room = UserRoom.objects.get(id=accommodation_room, user=user)
+            except UserRoom.DoesNotExist:
+                return Response({'error': 'Комната не найдена или не принадлежит пользователю.'},
+                                status=status.HTTP_404_NOT_FOUND)
+
+            furniture = instance.furniture
+            category_name = furniture.categories.name
+
+            if category_name == "Мебель и принадлежности":
+                if user_room.max_furniture_count <= 0:
+                    return Response({'error': 'Достигнуто максимальное количество мебели в комнате.'},
+                                    status=status.HTTP_400_BAD_REQUEST)
+                user_room.max_furniture_count -= 1  # Вычитаем количество мебели
+            elif category_name == "Специально медицинское оборудование":
+                if user_room.max_medical_equipment_count <= 0:
+                    return Response({
+                        'error': 'Достигнуто максимальное количество специального медицинского оборудования в комнате.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+                user_room.max_medical_equipment_count -= 1  # Вычитаем количество медоборудования
+            elif category_name == "Вспомогательное оборудование":
+                if user_room.max_auxiliary_equipment_count <= 0:
+                    return Response(
+                        {'error': 'Достигнуто максимальное количество вспомогательного оборудования в комнате.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+                user_room.max_auxiliary_equipment_count -= 1
+            elif category_name == "Элементы декора":
+                if user_room.max_decor_elements_count <= 0:
+                    return Response({'error': 'Достигнуто максимальное количество элементов декора в комнате.'},
+                                    status=status.HTTP_400_BAD_REQUEST)
+                user_room.max_decor_elements_count -= 1
+
+            user_room.save()
+
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.validated_data['in_warehouse'] = False
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     @extend_schema(summary="API для создания новой мебели")
     def create(self, request, *args, **kwargs):
@@ -183,3 +238,25 @@ class UserFurnitureViewSet(viewsets.ModelViewSet):
         else:
             return Response({'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
+    @extend_schema(summary="API для удаления/продажи мебели")
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        user = request.user
+        furniture = instance.furniture
+
+        try:
+            user_furniture = UserFurniture.objects.get(user=user, furniture=furniture)
+        except UserFurniture.DoesNotExist:
+            return Response({'error': 'У вас нет прав на удаление этой мебели.'}, status=status.HTTP_403_FORBIDDEN)
+
+        try:
+            user_attributes = UserAttributes.objects.get(user=user)
+        except UserAttributes.DoesNotExist:
+            return Response({'error': 'Атрибуты пользователя не найдены.'}, status=status.HTTP_404_NOT_FOUND)
+
+        furniture_price = furniture.price
+        user_attributes.money_up(furniture_price // 2)
+
+        instance.delete()
+
+        return Response({'message': 'Мебель успешно продана и деньги добавлены.'}, status=status.HTTP_204_NO_CONTENT)

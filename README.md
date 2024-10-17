@@ -757,20 +757,8 @@ ___
 ```
 {
   "furniture": 0,
-  "in_warehouse": true
-}
-```
-
-</details>
-<details>
-<summary><code>PUT/api/v1/user_furniture/{id}/</code></summary>
-
-*Полное обновление связи мебель-пользователь*
-
-```
-{
-  "furniture": 0,
-  "in_warehouse": true
+  "in_warehouse": true,
+  "accommodation_room": 0
 }
 ```
 
@@ -778,12 +766,13 @@ ___
 <details>
 <summary><code>PATCH/api/v1/user_furniture/{id}/</code></summary>
 
-*Частичное обновление связи мебель-пользователь*
+*Частичное редактирование/размещение в комнате или отправке на склад мебели. Зависит от in_warehouse если true то проверяется комната в которую размещаем иначе отправляем на склад и делаем accommodation_room = None.*
 
 ```
 {
   "furniture": 0,
-  "in_warehouse": true
+  "in_warehouse": true,
+  "accommodation_room": 0
 }
 ```
 
@@ -791,7 +780,7 @@ ___
 <details>
 <summary><code>DELETE/api/v1/user_furniture/{id}/</code></summary>
 
-*Удаление связи мебель-пользователь, скорее всего будет заблокировано*
+*Удаление/продажа мебели, берём стоимость мебели и делим пополам с округлением.*
 
 
 </details>

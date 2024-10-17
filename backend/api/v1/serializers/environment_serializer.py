@@ -85,21 +85,83 @@ class UserFurnitureSerializerForGet(serializers.ModelSerializer):
 
 
 class UserFurnitureSerializerForPost(serializers.ModelSerializer):
+    accommodation_room = serializers.PrimaryKeyRelatedField(
+        queryset=UserRoom.objects.all(),
+        required=False,
+    )
+
     class Meta:
         model = UserFurniture
         fields = [
             'furniture',
-            'in_warehouse'
+            'in_warehouse',
+            'accommodation_room',
         ]
+        extra_kwargs = {
+            'accommodation_room': {'required': False}
+        }
 
     def validate(self, attrs):
         user = self.context['request'].user
-
         furniture = attrs.get('furniture')
 
+        # Проверка на наличие комнаты для определенных категорий
         if furniture.categories.name in ('Специально медицинское оборудование', 'Вспомогательное оборудование'):
-
             if not UserRoom.objects.filter(user=user, room=furniture.room).exists():
                 raise serializers.ValidationError("У пользователя нет комнаты для данной мебели.")
+
+        # Проверяем accommodation_room
+        accommodation_room = attrs.get('accommodation_room')
+
+        if accommodation_room is not None:
+            accommodation_room_id = accommodation_room.id
+            if not isinstance(accommodation_room_id, int):  # Проверяем, что это ID
+                raise serializers.ValidationError("Неверный формат для accommodation_room. Ожидается ID.")
+
+            try:
+                user_room = UserRoom.objects.get(id=accommodation_room_id, user=user)
+            except UserRoom.DoesNotExist:
+                raise serializers.ValidationError("Комната не найдена или не принадлежит пользователю.")
+
+        return attrs
+
+
+class PlaceFurnitureSerializer(serializers.ModelSerializer):
+    accommodation_room = serializers.PrimaryKeyRelatedField(
+        queryset=UserRoom.objects.all(),
+        required=False,
+    )
+
+    class Meta:
+        model = UserFurniture
+        fields = [
+            'furniture',
+            'in_warehouse',
+            'accommodation_room',
+        ]
+        extra_kwargs = {
+            'furniture': {'required': False},
+            'in_warehouse': {'required': False},
+            'accommodation_room': {'required': False},
+        }
+
+    def validate(self, attrs):
+        user = self.context['request'].user
+        furniture = attrs.get('furniture')
+        accommodation_room = attrs.get('accommodation_room')
+
+        if furniture:
+            if furniture.categories.name in ('Специально медицинское оборудование', 'Вспомогательное оборудование'):
+                if not UserRoom.objects.filter(user=user, room=furniture.room).exists():
+                    raise serializers.ValidationError("У пользователя нет комнаты для данной мебели.")
+
+        if accommodation_room is not None:
+            accommodation_room_id = accommodation_room.id
+            if not isinstance(accommodation_room_id, int):
+                raise serializers.ValidationError("Неверный формат ID комнаты.")
+            try:
+                user_room = UserRoom.objects.get(id=accommodation_room_id, user=user)
+            except UserRoom.DoesNotExist:
+                raise serializers.ValidationError("Комната не найдена или не принадлежит пользователю.")
 
         return attrs
