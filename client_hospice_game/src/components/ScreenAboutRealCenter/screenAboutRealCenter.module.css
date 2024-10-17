@@ -8,6 +8,7 @@
     height: 633px;
     border-radius: 40px;
     background-color: #E8EEFC;
+    scroll-margin-top: max(4.5rem, 15vh);
 }
 
 .wrapperDescriptionAndButton {
@@ -75,6 +76,7 @@
         height: 550px;
         border-radius: 32px;
         background-color: #E8EEFC;
+        scroll-margin-top: max(4.5rem, 15vh);
     }
 
     .wrapperDescriptionAndButton {

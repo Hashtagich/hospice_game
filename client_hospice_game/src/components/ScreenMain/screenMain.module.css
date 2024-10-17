@@ -5,6 +5,7 @@
     height: 498px;
     background-color: #C2D935;
     border-radius: 0px 0px 32px 32px;
+    scroll-margin-top: max(4.5rem, 15vh);
 }
 
 .bottomLine {
@@ -109,6 +110,7 @@
         height: 605px;
         background-color: #C2D935;
         border-radius: 0px 0px 36px 36px;
+        scroll-margin-top: max(4.5rem, 15vh);
     }
 
     .wrapperContext {
@@ -180,12 +182,12 @@
         width: 320px;
         height: 61px;
         border-radius: 123px;
-        color: white;
+        color: #7B7BB1;
         font-weight: 500;
         font-size: 24px;
         line-height: 28.8px;
         font-family: 'RobotoRegular', sans-serif;
-        background: #bdbdbb;
+        background: #A7A7DE;
         line-height: 28.8px;
         cursor: pointer;
         border: none;

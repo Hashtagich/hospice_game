@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.bdd5f5d3.css",
-    "main.js": "/static/js/main.27e5258d.js",
+    "main.css": "/static/css/main.ba8a5771.css",
+    "main.js": "/static/js/main.fbac9df5.js",
     "static/js/453.ace4e26c.chunk.js": "/static/js/453.ace4e26c.chunk.js",
     "static/media/slideOne.png": "/static/media/slideOne.e38c7077d2e6167386c2.png",
     "static/media/slideThree.png": "/static/media/slideThree.473ddbdd963f06d7700a.png",
@@ -18,19 +18,11 @@
     "static/media/mozicaCenterLogoIcon.svg": "/static/media/mozicaCenterLogoIcon.6cec1367d7461915a48c.svg",
     "static/media/mozicaCenterLogoIconMobile.svg": "/static/media/mozicaCenterLogoIconMobile.4bac30ac653cc32739af.svg",
     "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/individual.gif": "/static/media/individual.0573e0bbdfc51920c731.gif",
     "static/media/Pribambas-Regular.ttf": "/static/media/Pribambas-Regular.306636f786627f038ebd.ttf",
-    "static/media/mozikarehabIcon.svg": "/static/media/mozikarehabIcon.447476d5b5009d3ce267.svg",
-    "static/media/mozikarehabIconMobile.svg": "/static/media/mozikarehabIconMobile.f2fdd796217b342beb3a.svg",
-    "static/media/purchaseIcon.svg": "/static/media/purchaseIcon.9cb1afc13f92a6ea43a7.svg",
-    "static/media/purchaseIconMobile.svg": "/static/media/purchaseIconMobile.a0afd0c367908897d196.svg",
-    "static/media/familyIconMobile.svg": "/static/media/familyIconMobile.324cf3d91e74e8cb168e.svg",
-    "static/media/familyIcon.svg": "/static/media/familyIcon.49fa40c17f0cb9757941.svg",
-    "static/media/imdividualIconMobile.svg": "/static/media/imdividualIconMobile.2568bdff779094dff33a.svg",
-    "static/media/individualIcon.svg": "/static/media/individualIcon.2cb17da23bbfe894519b.svg",
-    "static/media/levelupIcon.svg": "/static/media/levelupIcon.22e64d14a8ef86d0622e.svg",
-    "static/media/levelupIconMobile.svg": "/static/media/levelupIconMobile.d49144013191e3c3b1ed.svg",
-    "static/media/procedureIcon.svg": "/static/media/procedureIcon.859cbcd1fccce50ab659.svg",
-    "static/media/procedureIconMobile.svg": "/static/media/procedureIconMobile.b4db3fe1c1f06b8126cf.svg",
+    "static/media/levelup.gif": "/static/media/levelup.d4119550ffef62887f5b.gif",
+    "static/media/purchase.gif": "/static/media/purchase.42f30045d0f24295008c.gif",
+    "static/media/mozikarehab.gif": "/static/media/mozikarehab.5a84dc9c055fb4f4adf7.gif",
     "static/media/logoFooter.svg": "/static/media/logoFooter.d3bb159e98605aae1034.svg",
     "static/media/Logo.svg": "/static/media/Logo.b8785b39ae9135d76f64.svg",
     "static/media/logoFooterForMobile.svg": "/static/media/logoFooterForMobile.65d2b9817749277c30eb.svg",
@@ -49,12 +41,12 @@
     "static/media/faceBurger.svg": "/static/media/faceBurger.1b29cc1f4f3a8a934db5.svg",
     "static/media/menuBurger.svg": "/static/media/menuBurger.5b6a465d5ea4eecf29a4.svg",
     "static/media/cross.svg": "/static/media/cross.245cd43b317ffbb41be8.svg",
-    "main.bdd5f5d3.css.map": "/static/css/main.bdd5f5d3.css.map",
-    "main.27e5258d.js.map": "/static/js/main.27e5258d.js.map",
+    "main.ba8a5771.css.map": "/static/css/main.ba8a5771.css.map",
+    "main.fbac9df5.js.map": "/static/js/main.fbac9df5.js.map",
     "453.ace4e26c.chunk.js.map": "/static/js/453.ace4e26c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bdd5f5d3.css",
-    "static/js/main.27e5258d.js"
+    "static/css/main.ba8a5771.css",
+    "static/js/main.fbac9df5.js"
   ]
 }

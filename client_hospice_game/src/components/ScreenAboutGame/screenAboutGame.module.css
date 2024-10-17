@@ -4,6 +4,7 @@
     margin: 0px 0px 0px 0px;
     width: 1360px;
     height: 331px;
+    scroll-margin-top: max(4.5rem, 15vh);
 }
 
 .image {
@@ -71,6 +72,7 @@
         margin: 0px 0px 0px 0px;
         width: 100%;
         height: 715px;
+        scroll-margin-top: max(4.5rem, 15vh);
     }
 
     .wrapperAboutGame {

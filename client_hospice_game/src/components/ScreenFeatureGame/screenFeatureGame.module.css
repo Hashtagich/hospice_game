@@ -38,42 +38,46 @@
     margin-top: 44px;
     width: 142px;
     height: 142px;
-    background-image: url('../../svg/purchaseIcon.svg');
+    background-size: cover;
+    background-image: url('../../gifs/purchase.gif');
 }
 
 .iconCellLevelup {
     margin-top: 44px;
     width: 142px;
     height: 142px;
-    background-image: url('../../svg/levelupIcon.svg');
+    background-size: cover;
+    background-image: url('../../gifs/levelup.gif');
 }
 
 .iconCellProcedure {
     margin-top: 44px;
     width: 142px;
     height: 142px;
-    background-image: url('../../svg/procedureIcon.svg');
+    background-size: cover;
+    background-image: url('../../gifs/procedure.gif');
 }
 
 .iconCellIndividual {
     margin-top: 44px;
     width: 142px;
     height: 142px;
-    background-image: url('../../svg/individualIcon.svg');
+    background-size: cover;
+    background-image: url('../../gifs/individual.gif');
 }
 
 .iconCellMozikarehub {
     margin-top: 44px;
     width: 142px;
     height: 142px;
-    background-image: url('../../svg/mozikarehabIcon.svg');
+    background-image: url('../../gifs/mozikarehab.gif');
 }
 
 .iconCellFamily {
     margin-top: 44px;
     width: 142px;
     height: 142px;
-    background-image: url('../../svg/familyIcon.svg');
+    background-image: url('../../gifs/family.gif');
 }
 
 .titleCell {
@@ -107,6 +111,7 @@
         width: 100%;
         height: 1790px;
         background-color: #F0F4FC;
+        scroll-margin-top: max(4.5rem, 15vh);
     }
 
     .title {
@@ -143,42 +148,48 @@
         margin-top: 0px;
         width: 80px;
         height: 80px;
-        background-image: url('../../svg/purchaseIconMobile.svg');
+        background-size: cover;
+        background-image: url('../../gifs/purchase.gif');
     }
     
     .iconCellLevelup {
         margin-top: 0px;
         width: 80px;
         height: 80px;
-        background-image: url('../../svg/levelupIconMobile.svg');
+        background-size: cover;
+        background-image: url('../../gifs/levelup.gif');
     }
     
     .iconCellProcedure {
         margin-top: 0px;
         width: 80px;
         height: 80px;
-        background-image: url('../../svg/procedureIconMobile.svg');
+        background-size: cover;
+        background-image: url('../../gifs/procedure.gif');
     }
     
     .iconCellIndividual {
         margin-top: 0px;
         width: 80px;
         height: 80px;
-        background-image: url('../../svg/imdividualIconMobile.svg');
+        background-size: cover;
+        background-image: url('../../gifs/individual.gif');
     }
     
     .iconCellMozikarehub {
         margin-top: 0px;
         width: 80px;
         height: 80px;
-        background-image: url('../../svg/mozikarehabIconMobile.svg');
+        background-size: cover;
+        background-image: url('../../gifs/mozikarehab.gif');
     }
     
     .iconCellFamily {
         margin-top: 0px;
         width: 80px;
         height: 80px;
-        background-image: url('../../svg/familyIconMobile.svg');
+        background-size: cover;
+        background-image: url('../../gifs/family.gif');
     }
 
     .titleCell {

@@ -6,6 +6,7 @@
 
 @media (min-width: 359px) and (max-width: 1235px) {
     .main {
+        padding-top: 77px;
         width: 100vw;
         display: flex;
         flex-direction: column;

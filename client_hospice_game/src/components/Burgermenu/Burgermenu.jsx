@@ -1,9 +1,9 @@
 import styles from './burgermenu.module.css';
 
 
-const Burgermenu = ({ closeBurger }) => {
+const Burgermenu = ({ headerColor, closeBurger }) => {
     return (
-        <div className={styles.container}>
+        <div className={headerColor ? styles.containerLight : styles.container}>
             <ul className={styles.listnavigation}>
 				<li className={styles.li}><a className={styles.linkAncor} onClick={closeBurger} href='#aboutgame'>Об игре</a></li>
 				<li className={styles.li}><a className={styles.linkAncor} onClick={closeBurger} href='#featuresgame'>Особенности</a></li>

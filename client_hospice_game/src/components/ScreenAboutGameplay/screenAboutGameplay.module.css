@@ -45,6 +45,7 @@
         justify-content: center;
         width: 100%;
         height: 580px;
+        scroll-margin-top: max(4.5rem, 15vh);
     }
 
     .wrapperGeneral {

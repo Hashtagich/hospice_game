@@ -2,6 +2,10 @@
     display: none;
 }
 
+.containerLight {
+    display: none;
+}
+
 
 @media (min-width: 359px) and (max-width: 1235px) {
 
@@ -15,7 +19,23 @@
         right: 0px;
         width: 100%;
         height: 550px;
+        background-color: #C2D935;
+        box-shadow: 0px 5px 5px 0px rgba(34, 60, 80, 0.14);
+        z-index: 22;
+    }
+
+    .containerLight {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 40px 0px 100px 20px;
+        top: 76px;
+        right: 0px;
+        width: 100%;
+        height: 550px;
         background-color: white;
+        box-shadow: 0px 5px 5px 0px rgba(34, 60, 80, 0.14);
         z-index: 22;
     }
 

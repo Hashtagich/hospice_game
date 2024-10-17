@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import { useState } from 'react';
 
 
-const TheHeader = () => {
+const TheHeader = ({ headerColor }) => {
 
 const [isOpen, setIsOpen] = useState(false)
 
@@ -13,12 +13,12 @@ const openBurger = () => setIsOpen(prev => !prev)
 const closeBurger = () => setIsOpen(false);
 
     return (
-        <header id='main' className={styles.header}>
-            <div className={styles.container}>
+        <header className={styles.header}>
+            <div className={headerColor ? styles.containerLight : styles.container}>
                 <div className={styles.wrapperLogo}></div>
                 <nav className={!isOpen ? styles.navburger : styles.cross}>
                     <Button click={openBurger} className={styles.buttonBurger}></Button>
-                    {isOpen && <Burgermenu closeBurger={closeBurger}/>}
+                    {isOpen && <Burgermenu headerColor={headerColor} closeBurger={closeBurger}/>}
                 </nav>
                 <nav className={styles.nav}>
                     <ul className={styles.wrapperNavigation}>

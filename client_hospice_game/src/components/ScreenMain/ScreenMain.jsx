@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 
 const ScreenMain = () => {
     return (
-        <section className={styles.container}>
+        <section id='main' className={styles.container}>
             <div className={styles.wrapperContext}>
                 <div className={styles.wrapperInfoAndButton}>
                     <div className={styles.wrapperInfo}>
