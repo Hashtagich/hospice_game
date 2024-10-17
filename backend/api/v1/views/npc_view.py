@@ -9,6 +9,7 @@ from api.v1.serializers.npc_serializer import (
     DoctorSerializer, UserDoctorSerializer, LevelUpDoctorSerializer
 )
 from npc.models import Doctor, UserDoctor
+from environment.models import UserRoom
 from users.permissions import IsAdmin, IsNotActive, IsNotBlocked, ReadOwnDataOnly
 
 
@@ -32,12 +33,7 @@ class DoctorViewSet(viewsets.ReadOnlyModelViewSet):
 class UserDoctorViewSet(viewsets.ModelViewSet):
     queryset = UserDoctor.objects.all()
     permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked]
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return UserDoctorSerializer
-        else:
-            return UserDoctorSerializer
+    serializer_class = UserDoctorSerializer
 
     @extend_schema(summary="API для получения всей врачей")
     def list(self, request, *args, **kwargs):
@@ -65,18 +61,29 @@ class UserDoctorViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Врач не найден.'}, status=status.HTTP_404_NOT_FOUND)
 
         doctor_price = doctor.price
+        doctor_room = doctor.room.name
+        user = request.user
         user_attributes = request.user.attributes
 
-        # Снимаем деньги
-        try:
-            user_attributes.money_down(point=doctor_price)
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        if UserDoctor.objects.filter(user=user, doctor=doctor).exists():
+            return Response({'error': 'Врач уже куплен.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Создаём врача
+        user_rooms = UserRoom.objects.filter(user=user, room__is_special=True)
+
+        accommodation_room = None
+        for user_room in user_rooms:
+            if user_room.room.name == doctor_room:
+                accommodation_room = user_room
+                break
+
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=request.user)  # Передаем текущего пользователя
+            try:
+                user_attributes.money_down(point=doctor_price)
+            except Exception as e:
+                return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+            serializer.save(user=request.user, accommodation_room=accommodation_room)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

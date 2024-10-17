@@ -33,7 +33,6 @@ class UserDoctorSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         user = self.context['request'].user
-
         doctor = attrs.get('doctor')
 
         if not UserRoom.objects.filter(user=user, room=doctor.room).exists():

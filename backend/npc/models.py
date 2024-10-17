@@ -288,8 +288,8 @@ class UserDoctor(models.Model):
         UserRoom,
         on_delete=models.SET_NULL,
         verbose_name='Фактическая комната размещения',
-        null=True,  # Добавлено для разрешения NULL
-        blank=True   # Это также допустимо, если вы хотите, чтобы поле не было обязательным
+        null=True,
+        blank=True
     )
 
     def __str__(self):

@@ -164,7 +164,7 @@ class UserFurnitureViewSet(viewsets.ModelViewSet):
         if not instance.in_warehouse:
             instance.in_warehouse = True
             instance.accommodation_room = None
-            instance.save()  # Сохраняем изменения
+            instance.save()
             return Response({'message': 'Статус in_warehouse был обновлён на True, accommodation_room очищен.'},
                             status=status.HTTP_200_OK)
 
@@ -185,13 +185,13 @@ class UserFurnitureViewSet(viewsets.ModelViewSet):
                 if user_room.max_furniture_count <= 0:
                     return Response({'error': 'Достигнуто максимальное количество мебели в комнате.'},
                                     status=status.HTTP_400_BAD_REQUEST)
-                user_room.max_furniture_count -= 1  # Вычитаем количество мебели
+                user_room.max_furniture_count -= 1
             elif category_name == "Специально медицинское оборудование":
                 if user_room.max_medical_equipment_count <= 0:
                     return Response({
                         'error': 'Достигнуто максимальное количество специального медицинского оборудования в комнате.'},
                         status=status.HTTP_400_BAD_REQUEST)
-                user_room.max_medical_equipment_count -= 1  # Вычитаем количество медоборудования
+                user_room.max_medical_equipment_count -= 1
             elif category_name == "Вспомогательное оборудование":
                 if user_room.max_auxiliary_equipment_count <= 0:
                     return Response(

@@ -105,17 +105,15 @@ class UserFurnitureSerializerForPost(serializers.ModelSerializer):
         user = self.context['request'].user
         furniture = attrs.get('furniture')
 
-        # Проверка на наличие комнаты для определенных категорий
         if furniture.categories.name in ('Специально медицинское оборудование', 'Вспомогательное оборудование'):
             if not UserRoom.objects.filter(user=user, room=furniture.room).exists():
                 raise serializers.ValidationError("У пользователя нет комнаты для данной мебели.")
 
-        # Проверяем accommodation_room
         accommodation_room = attrs.get('accommodation_room')
 
         if accommodation_room is not None:
             accommodation_room_id = accommodation_room.id
-            if not isinstance(accommodation_room_id, int):  # Проверяем, что это ID
+            if not isinstance(accommodation_room_id, int):
                 raise serializers.ValidationError("Неверный формат для accommodation_room. Ожидается ID.")
 
             try:

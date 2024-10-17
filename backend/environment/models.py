@@ -24,6 +24,11 @@ class Room(models.Model):
         default=1
     )
 
+    is_special = models.BooleanField(
+        verbose_name='Специальная комната',
+        default=False
+    )
+
     def __str__(self):
         return f'{self.name}'
 
