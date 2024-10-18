@@ -132,14 +132,14 @@ class Profession(models.Model):
 
 class Doctor(models.Model):
     """Модель Врача."""
-    name = models.CharField(
-        verbose_name='Имя',
+    surname = models.CharField(
+        verbose_name='Фамилия',
         max_length=15,
         null=True
     )
 
-    surname = models.CharField(
-        verbose_name='Фамилия',
+    name = models.CharField(
+        verbose_name='Имя',
         max_length=15,
         null=True
     )

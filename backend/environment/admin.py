@@ -24,7 +24,13 @@ class CategoriesAdmin(admin.ModelAdmin):
 
 @admin.register(UserRoom)
 class UserRoomAdmin(admin.ModelAdmin):
-    list_display = ('user', 'id', 'room', 'level', 'max_medical_equipment_count', 'max_furniture_count',)
+    list_display = (
+        'user', 'id', 'room', 'level',
+        'max_medical_equipment_count',
+        'max_furniture_count',
+        'max_auxiliary_equipment_count',
+        'max_decor_elements_count'
+    )
     search_fields = ('user', 'room')
 
 
