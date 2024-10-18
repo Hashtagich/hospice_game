@@ -889,7 +889,95 @@ ___
 
 ---
 
-***API Раздел***
+***API Пациент-Пользователь***
+
+**Это связи между пациентом и пользователем для изменения свойств пациента конкретного для реализации движка игры**
+
+<details>
+<summary><code>GET/api/v1/user_patient/</code></summary>
+
+*Получение всех пациентов*
+
+```
+[
+  {
+    "patient": 0,
+    "is_done": true,
+    "rehabilitation": 9223372036854776000
+  }
+]
+```
+
+</details>
+<details>
+<summary><code>GET/api/v1/user_patient/{id}/</code></summary>
+
+*Получение конкретного пациента по ID*
+
+```
+{
+  "patient": 0,
+  "is_done": true,
+  "rehabilitation": 9223372036854776000
+}
+```
+
+</details>
+<details>
+<summary><code>POST/api/v1/user_patient/</code></summary>
+
+*Создание связи пациент-пользователь, реализация механики появления пациента. Для создания достаточно передать id пациента patient, is_done должно быть false, rehabilitation 0.*
+
+```
+{
+  "patient": 0,
+  "is_done": true,
+  "rehabilitation": 9223372036854776000
+}
+```
+
+</details>
+<details>
+<summary><code>PUT/api/v1/user_patient/{id}/</code></summary>
+
+*Полное редактирование пациента*
+
+```
+{
+  "patient": 0,
+  "is_done": true,
+  "rehabilitation": 9223372036854776000
+}
+```
+
+</details>
+
+
+
+<details>
+<summary><code>PATCH/api/v1/user_patient/{id}/</code></summary>
+
+*Частичное редактирование пациента*
+
+```
+{
+  "patient": 0,
+  "is_done": true,
+  "rehabilitation": 9223372036854776000
+}
+```
+
+</details>
+<details>
+<summary><code>DELETE/api/v1/user_patient/{id}/</code></summary>
+
+*Удаление пациента*
+
+</details>
+
+___
+
+***API Пациент-Процедура***
 
 <details>
 <summary><code>GET/api/ссылка_на_апи/</code></summary>
@@ -931,6 +1019,28 @@ ___
 ```
 
 </details>
+<details>
+<summary><code>GET/api/ссылка_на_апи/</code></summary>
+
+*Описание API*
+
+```
+Код
+```
+
+</details>
+<details>
+<summary><code>GET/api/ссылка_на_апи/</code></summary>
+
+*Описание API*
+
+```
+Код
+```
+
+</details>
+
+
 
 ___
 

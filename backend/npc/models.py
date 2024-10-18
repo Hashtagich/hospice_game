@@ -246,7 +246,7 @@ class UserPatient(models.Model):
 
     rehabilitation = models.PositiveIntegerField(
         verbose_name='Реабилитация',
-        default=1
+        default=0
     )
 
     def __str__(self):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from npc.models import Doctor, UserDoctor
+from npc.models import Doctor, UserDoctor, UserPatient
 from environment.models import UserRoom
 
 User = get_user_model()
@@ -52,3 +52,23 @@ class LevelUpDoctorSerializer(serializers.ModelSerializer):
             'point',
             'money'
         ]
+
+
+class UserPatientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserPatient
+        fields = [
+            'patient',
+            'is_done',
+            'rehabilitation',
+            'is_done'
+        ]
+
+    def validate(self, attrs):
+        user = self.context['request'].user
+        patient = attrs.get('patient')
+
+        if UserPatient.objects.filter(user=user, patient=patient, is_done=False).exists():
+            raise serializers.ValidationError("Данный пациент уже присутствует и уже проходит реабилитацию.")
+
+        return attrs

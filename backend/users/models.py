@@ -124,6 +124,11 @@ class UserAttributes(models.Model):
         default=0
     )
 
+    number_patients = models.PositiveIntegerField(
+        verbose_name='Кол-во мест для пациентов',
+        default=0
+    )
+
     def __str__(self):
         return f'{self.user.username} - уровень {self.level}'
 
@@ -180,6 +185,22 @@ class UserAttributes(models.Model):
         """Метод уменьшения валюты пользователя. Уменьшается на величину point, по дефолту = 1."""
         if self.check_funds(currency=self.puzzles, point=point):
             self.puzzles -= point
+            self.save()
+        else:
+            raise ValueError("Недостаточно средств для вычитания этой суммы.")
+
+    def number_patients_up(self, point: int = 1):
+        """Метод увеличения кол-ва мест для пациентов пользователя. Увеличивается на величину point, по дефолту = 1."""
+        if self.check_point(point):
+            raise ValueError("Число должно быть строго больше 0.")
+        else:
+            self.number_patients += point
+            self.save()
+
+    def number_patients_down(self, point: int = 1):
+        """Метод уменьшения кол-ва мест для пациентов пользователя. Уменьшается на величину point, по дефолту = 1."""
+        if self.check_funds(currency=self.number_patients, point=point):
+            self.number_patients -= point
             self.save()
         else:
             raise ValueError("Недостаточно средств для вычитания этой суммы.")

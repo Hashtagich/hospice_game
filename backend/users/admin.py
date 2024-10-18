@@ -6,7 +6,7 @@ class UserAttributesInline(TabularInline):  # Или используйте Tabu
     model = UserAttributes
     can_delete = False
     verbose_name_plural = 'Атрибуты пользователя'
-    fields = ('level', 'money', 'puzzles', 'experience')  # Укажите поля, которые хотите отобразить
+    fields = ('level', 'money', 'puzzles', 'experience', 'number_patients')  # Укажите поля, которые хотите отобразить
 
 
 @register(User)
@@ -22,6 +22,7 @@ class UserAdmin(ModelAdmin):
         'get_user_experience',
         'get_user_money',
         'get_user_puzzles',
+        'get_user_number_patients'
     )
     inlines = [UserAttributesInline]
 
@@ -39,7 +40,11 @@ class UserAdmin(ModelAdmin):
     def get_user_experience(self, obj):
         return obj.attributes.experience if obj.attributes else 0
 
+    def get_user_number_patients(self, obj):
+        return obj.attributes.number_patients if obj.attributes else 0
+
     get_user_level.short_description = 'Уровень'
     get_user_experience.short_description = 'Опыт'
     get_user_money.short_description = 'Монеты'
     get_user_puzzles.short_description = 'Пазлы'
+    get_user_number_patients.short_description = 'Кол-во мест для пациентов'

@@ -80,12 +80,15 @@ class UserRoomViewSet(viewsets.ModelViewSet):
         user_attributes = user.attributes
 
         user_room = UserRoom.objects.filter(user=user, room=room).first()
+        room_is_special = user_room.room.is_special
 
-        if user_room and user_room.room.is_special:
+        if user_room and room_is_special:
             return Response({'error': f'Вы можете купить только один кабинет - {room.name}.'},
                             status=status.HTTP_400_BAD_REQUEST)
 
         try:
+            if not room_is_special:
+                user_attributes.number_patients_up(point=1)
             user_attributes.money_down(point=room_price)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
