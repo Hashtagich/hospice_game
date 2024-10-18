@@ -76,19 +76,27 @@ class UserRoomViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Комната не найдена.'}, status=status.HTTP_404_NOT_FOUND)
 
         room_price = room.price
-        user_attributes = request.user.attributes
+        user = request.user
+        user_attributes = user.attributes
 
-        # Снимаем деньги
+        user_room = UserRoom.objects.filter(user=user, room=room).first()
+
+        if user_room and user_room.room.is_special:
+            return Response({'error': f'Вы можете купить только один кабинет - {room.name}.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
         try:
             user_attributes.money_down(point=room_price)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Создаём комнату
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=request.user)  # Передаем текущего пользователя
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            serializer.save(user=request.user)
+            return Response({
+                'message': f'{room.name} успешно куплен за {room_price} монет.',
+                'data': serializer.data
+            }, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

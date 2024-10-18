@@ -63,7 +63,7 @@ class UserDoctorViewSet(viewsets.ModelViewSet):
         doctor_price = doctor.price
         doctor_room = doctor.room.name
         user = request.user
-        user_attributes = request.user.attributes
+        user_attributes = user.attributes
 
         if UserDoctor.objects.filter(user=user, doctor=doctor).exists():
             return Response({'error': 'Врач уже куплен.'}, status=status.HTTP_400_BAD_REQUEST)
