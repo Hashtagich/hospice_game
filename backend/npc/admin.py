@@ -32,7 +32,7 @@ class ProfessionAdmin(admin.ModelAdmin):
 
 @admin.register(Doctor)
 class ProfessionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id', 'surname', 'patronymic', 'profession', 'price', 'room')
+    list_display = ('surname', 'name', 'patronymic', 'id', 'profession', 'price', 'room')
 
 
 @admin.register(PatientProcedure)
