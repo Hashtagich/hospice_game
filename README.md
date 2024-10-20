@@ -901,7 +901,27 @@ ___
 ```
 [
   {
-    "patient": 0,
+    "patient": {
+      "name": "string",
+      "age": 9223372036854776000,
+      "diagnosis": {
+        "name": "string",
+        "symptoms": "string"
+      },
+      "categories_procedure": [
+        {
+          "name": "string"
+        }
+      ],
+      "procedure": [
+        {
+          "name": "string",
+          "categories": "string",
+          "description": "string",
+          "execution_time": 9223372036854776000
+        }
+      ]
+    },
     "is_done": true,
     "rehabilitation": 9223372036854776000
   }
@@ -916,7 +936,27 @@ ___
 
 ```
 {
-  "patient": 0,
+  "patient": {
+    "name": "string",
+    "age": 9223372036854776000,
+    "diagnosis": {
+      "name": "string",
+      "symptoms": "string"
+    },
+    "categories_procedure": [
+      {
+        "name": "string"
+      }
+    ],
+    "procedure": [
+      {
+        "name": "string",
+        "categories": "string",
+        "description": "string",
+        "execution_time": 9223372036854776000
+      }
+    ]
+  },
   "is_done": true,
   "rehabilitation": 9223372036854776000
 }
@@ -975,70 +1015,113 @@ ___
 
 </details>
 
-___
+[//]: # (___)
 
-***API Пациент-Процедура***
+[//]: # ()
+[//]: # (***API Пациент-Процедура***)
 
-<details>
-<summary><code>GET/api/ссылка_на_апи/</code></summary>
+[//]: # ()
+[//]: # (<details>)
 
-*Описание API*
+[//]: # (<summary><code>GET/api/ссылка_на_апи/</code></summary>)
 
-```
-Код
-```
+[//]: # ()
+[//]: # (*Описание API*)
 
-</details>
-<details>
-<summary><code>GET/api/ссылка_на_апи/</code></summary>
+[//]: # ()
+[//]: # (```)
 
-*Описание API*
+[//]: # (Код)
 
-```
-Код
-```
+[//]: # (```)
 
-</details>
-<details>
-<summary><code>GET/api/ссылка_на_апи/</code></summary>
+[//]: # ()
+[//]: # (</details>)
 
-*Описание API*
+[//]: # (<details>)
 
-```
-Код
-```
+[//]: # (<summary><code>GET/api/ссылка_на_апи/</code></summary>)
 
-</details>
-<details>
-<summary><code>GET/api/ссылка_на_апи/</code></summary>
+[//]: # ()
+[//]: # (*Описание API*)
 
-*Описание API*
+[//]: # ()
+[//]: # (```)
 
-```
-Код
-```
+[//]: # (Код)
 
-</details>
-<details>
-<summary><code>GET/api/ссылка_на_апи/</code></summary>
+[//]: # (```)
 
-*Описание API*
+[//]: # ()
+[//]: # (</details>)
 
-```
-Код
-```
+[//]: # (<details>)
 
-</details>
-<details>
-<summary><code>GET/api/ссылка_на_апи/</code></summary>
+[//]: # (<summary><code>GET/api/ссылка_на_апи/</code></summary>)
 
-*Описание API*
+[//]: # ()
+[//]: # (*Описание API*)
 
-```
-Код
-```
+[//]: # ()
+[//]: # (```)
 
-</details>
+[//]: # (Код)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (</details>)
+
+[//]: # (<details>)
+
+[//]: # (<summary><code>GET/api/ссылка_на_апи/</code></summary>)
+
+[//]: # ()
+[//]: # (*Описание API*)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (Код)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (</details>)
+
+[//]: # (<details>)
+
+[//]: # (<summary><code>GET/api/ссылка_на_апи/</code></summary>)
+
+[//]: # ()
+[//]: # (*Описание API*)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (Код)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (</details>)
+
+[//]: # (<details>)
+
+[//]: # (<summary><code>GET/api/ссылка_на_апи/</code></summary>)
+
+[//]: # ()
+[//]: # (*Описание API*)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (Код)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (</details>)
 
 
 
