@@ -43,3 +43,16 @@ class ReadOwnDataOnly(BasePermission):
             raise PermissionDenied("У вас нет доступа к данным других пользователей.")
         else:
             return True
+
+
+class ReadOwnDataOnlyForConnection(BasePermission):
+    """Проверка доступа пользователя только к своим данным. Для связей"""
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in ['HEAD', 'OPTIONS']:
+            return True
+
+        if obj.user.id != request.user.id:
+            raise PermissionDenied("У вас нет доступа к данным других пользователей.")
+        else:
+            return True

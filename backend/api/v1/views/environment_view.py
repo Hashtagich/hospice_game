@@ -1,17 +1,16 @@
 from drf_spectacular.utils import extend_schema
-from rest_framework import generics, status
+from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.decorators import action
 
 from api.v1.serializers.environment_serializer import (
     RoomSerializer, FurnitureSerializer, UserRoomSerializerForGet, UserRoomSerializerForPost, LevelUpRoomSerializer,
     UserFurnitureSerializerForGet, UserFurnitureSerializerForPost, PlaceFurnitureSerializer
 )
 from environment.models import Room, Furniture, UserRoom, UserFurniture
-from users.permissions import IsAdmin, IsNotActive, IsNotBlocked, ReadOwnDataOnly
+from users.permissions import IsNotActive, IsNotBlocked, ReadOwnDataOnlyForConnection
 from users.models import UserAttributes
 
 
@@ -58,12 +57,14 @@ class UserRoomViewSet(viewsets.ModelViewSet):
         else:
             return UserRoomSerializerForPost
 
-    @extend_schema(summary="API для получения всех комнат")
+    @extend_schema(summary="API для получения всех комнат текущего пользователя")
     def list(self, request, *args, **kwargs):
+        self.queryset = self.queryset.filter(user=request.user)
         return super().list(request, *args, **kwargs)
 
     @extend_schema(summary="API для получения конкретной комнаты по ID")
     def retrieve(self, request, *args, **kwargs):
+        self.permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked, ReadOwnDataOnlyForConnection]
         return super().retrieve(request, *args, **kwargs)
 
     @extend_schema(summary="API для создания новой комнаты")
@@ -79,15 +80,16 @@ class UserRoomViewSet(viewsets.ModelViewSet):
         user = request.user
         user_attributes = user.attributes
 
-        user_room = UserRoom.objects.filter(user=user, room=room).first()
-        room_is_special = user_room.room.is_special
-
-        if user_room and room_is_special:
-            return Response({'error': f'Вы можете купить только один кабинет - {room.name}.'},
-                            status=status.HTTP_400_BAD_REQUEST)
-
         try:
-            if not room_is_special:
+            user_room = UserRoom.objects.filter(user=user, room=room).first()
+
+            if user_room:
+                room_is_special = user_room.room.is_special
+                if room_is_special:
+                    return Response({'error': f'Вы можете купить только один кабинет - {room.name}.'},
+                                    status=status.HTTP_400_BAD_REQUEST)
+
+            else:
                 user_attributes.number_patients_up(point=1)
             user_attributes.money_down(point=room_price)
         except Exception as e:
@@ -156,12 +158,14 @@ class UserFurnitureViewSet(viewsets.ModelViewSet):
         else:
             return UserFurnitureSerializerForPost
 
-    @extend_schema(summary="API для получения всей мебели")
+    @extend_schema(summary="API для получения всей мебели текущего пользователя")
     def list(self, request, *args, **kwargs):
+        self.queryset = self.queryset.filter(user=request.user)
         return super().list(request, *args, **kwargs)
 
     @extend_schema(summary="API для получения конкретной мебели по ID")
     def retrieve(self, request, *args, **kwargs):
+        self.permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked, ReadOwnDataOnlyForConnection]
         return super().retrieve(request, *args, **kwargs)
 
     @extend_schema(exclude=True)

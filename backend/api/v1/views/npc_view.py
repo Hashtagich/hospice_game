@@ -1,5 +1,5 @@
 from drf_spectacular.utils import extend_schema
-from rest_framework import generics, status
+from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -11,7 +11,7 @@ from api.v1.serializers.npc_serializer import (
 )
 from npc.models import Doctor, UserDoctor, UserPatient, Patient, PatientProcedure, Procedure
 from environment.models import UserRoom
-from users.permissions import IsAdmin, IsNotActive, IsNotBlocked, ReadOwnDataOnly
+from users.permissions import IsNotActive, IsNotBlocked, ReadOwnDataOnlyForConnection
 
 
 @extend_schema(tags=['Врачи'])
@@ -36,12 +36,14 @@ class UserDoctorViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked]
     serializer_class = UserDoctorSerializer
 
-    @extend_schema(summary="API для получения всей врачей")
+    @extend_schema(summary="API для получения всей врачей текущего пользователя")
     def list(self, request, *args, **kwargs):
+        self.queryset = self.queryset.filter(user=request.user)
         return super().list(request, *args, **kwargs)
 
     @extend_schema(summary="API для получения конкретного врача по ID")
     def retrieve(self, request, *args, **kwargs):
+        self.permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked, ReadOwnDataOnlyForConnection]
         return super().retrieve(request, *args, **kwargs)
 
     @extend_schema(summary="API для обновления конкретного врача по ID")
@@ -132,12 +134,14 @@ class UserPatientViewSet(viewsets.ModelViewSet):
         else:
             return UserPatientSerializerForPost
 
-    @extend_schema(summary="API для получения всех пациентов")
+    @extend_schema(summary="API для получения всех пациентов текущего пользователя")
     def list(self, request, *args, **kwargs):
+        self.queryset = self.queryset.filter(user=request.user)
         return super().list(request, *args, **kwargs)
 
     @extend_schema(summary="API для получения конкретного пациента по ID")
     def retrieve(self, request, *args, **kwargs):
+        self.permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked, ReadOwnDataOnlyForConnection]
         return super().retrieve(request, *args, **kwargs)
 
     @extend_schema(summary="API для полного обновления конкретного пациента по ID")
@@ -182,26 +186,30 @@ class UserPatientViewSet(viewsets.ModelViewSet):
             user_patient = serializer.save(user=user, patient=patient)
             procedures = patient.procedure.all()
             long = len(procedures)
+
+            procedure_list = Procedure.objects.filter(name="Отдых")
+            if procedure_list:
+                procedure_relax = procedure_list[0]
+            else:
+                procedure_relax = None
+
             for index in range(long):
                 procedure = procedures[index]
                 PatientProcedure.objects.create(
                     patient=patient,
                     procedure=procedure,
-                    counter=0,
-                    is_done=False
+                    counter=procedure.execution_time
                 )
 
                 if index != long - 1:
                     PatientProcedure.objects.create(
                         patient=patient,
-                        procedure=Procedure(id=20),
-                        counter=0,
-                        is_done=False
+                        procedure=procedure_relax,
+                        counter=procedure.execution_time
                     )
 
             user_patient.save()
 
-            # serializer.save(user=request.user, patient=patient)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
