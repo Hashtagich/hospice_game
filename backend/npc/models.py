@@ -231,7 +231,6 @@ class PatientProcedure(models.Model):
         return f'{self.patient.name} - {self.procedure.name}'
 
     class Meta:
-        # unique_together = ('patient', 'procedure')  # Уникальность комбинации пациент-процедура
         verbose_name = 'Процедура пациента'
         verbose_name_plural = 'Процедуры пациентов'
         ordering = ['id']

@@ -1,9 +1,55 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from npc.models import Doctor, UserDoctor, UserPatient
+from npc.models import Doctor, UserDoctor, UserPatient, Patient, Diagnosis, Categories, Procedure
 from environment.models import UserRoom
 
 User = get_user_model()
+
+
+class ProcedureSerializer(serializers.ModelSerializer):
+    categories = serializers.CharField(source='categories.name', read_only=True)
+
+    class Meta:
+        model = Procedure
+        fields = [
+            'name',
+            'categories',
+            'description',
+            'execution_time'
+        ]
+
+
+class CategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categories
+        fields = [
+            'name'
+        ]
+
+
+class DiagnosisSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Diagnosis
+        fields = [
+            'name',
+            'symptoms'
+        ]
+
+
+class PatientSerializer(serializers.ModelSerializer):
+    diagnosis = DiagnosisSerializer()
+    categories_procedure = CategoriesSerializer(many=True)
+    procedure = ProcedureSerializer(many=True)
+
+    class Meta:
+        model = Patient
+        fields = [
+            'name',
+            'age',
+            'diagnosis',
+            'categories_procedure',
+            'procedure'
+        ]
 
 
 class DoctorSerializer(serializers.ModelSerializer):
@@ -54,14 +100,25 @@ class LevelUpDoctorSerializer(serializers.ModelSerializer):
         ]
 
 
-class UserPatientSerializer(serializers.ModelSerializer):
+class UserPatientSerializerForGet(serializers.ModelSerializer):
+    patient = PatientSerializer()
+
     class Meta:
         model = UserPatient
         fields = [
             'patient',
             'is_done',
             'rehabilitation',
-            'is_done'
+        ]
+
+
+class UserPatientSerializerForPost(serializers.ModelSerializer):
+    class Meta:
+        model = UserPatient
+        fields = [
+            'patient',
+            'is_done',
+            'rehabilitation',
         ]
 
     def validate(self, attrs):

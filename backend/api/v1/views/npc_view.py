@@ -6,9 +6,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from api.v1.serializers.npc_serializer import (
-    DoctorSerializer, UserDoctorSerializer, LevelUpDoctorSerializer, UserPatientSerializer
+    DoctorSerializer, UserDoctorSerializer, LevelUpDoctorSerializer, UserPatientSerializerForGet,
+    UserPatientSerializerForPost
 )
-from npc.models import Doctor, UserDoctor, UserPatient, Patient
+from npc.models import Doctor, UserDoctor, UserPatient, Patient, PatientProcedure, Procedure
 from environment.models import UserRoom
 from users.permissions import IsAdmin, IsNotActive, IsNotBlocked, ReadOwnDataOnly
 
@@ -124,7 +125,12 @@ class LevelUpDoctorView(APIView):
 class UserPatientViewSet(viewsets.ModelViewSet):
     queryset = UserPatient.objects.all()
     permission_classes = [IsAuthenticated, IsNotActive, IsNotBlocked]
-    serializer_class = UserPatientSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return UserPatientSerializerForGet
+        else:
+            return UserPatientSerializerForPost
 
     @extend_schema(summary="API для получения всех пациентов")
     def list(self, request, *args, **kwargs):
@@ -146,7 +152,7 @@ class UserPatientViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         return super().destroy(request, *args, **kwargs)
 
-    @extend_schema(summary="API для создания нового пациента")
+    @extend_schema(summary="API для создания нового пациента и процедур к ним")
     def create(self, request, *args, **kwargs):
         patient_id = request.data.get('patient')
 
@@ -173,7 +179,29 @@ class UserPatientViewSet(viewsets.ModelViewSet):
             except Exception as e:
                 return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
-            serializer.save(user=request.user, patient=patient)
+            user_patient = serializer.save(user=user, patient=patient)
+            procedures = patient.procedure.all()
+            long = len(procedures)
+            for index in range(long):
+                procedure = procedures[index]
+                PatientProcedure.objects.create(
+                    patient=patient,
+                    procedure=procedure,
+                    counter=0,
+                    is_done=False
+                )
+
+                if index != long - 1:
+                    PatientProcedure.objects.create(
+                        patient=patient,
+                        procedure=Procedure(id=20),
+                        counter=0,
+                        is_done=False
+                    )
+
+            user_patient.save()
+
+            # serializer.save(user=request.user, patient=patient)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

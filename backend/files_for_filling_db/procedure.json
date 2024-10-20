@@ -113,4 +113,11 @@
     "categories": 6,
     "execution_time": "90"
   }
+  ,
+  {
+    "name": "Отдых",
+    "description": "Отдых от процедур.",
+    "categories": 7,
+    "execution_time": "60"
+  }
 ]
