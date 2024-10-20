@@ -26,6 +26,20 @@ class Patient(models.Model):
         verbose_name='Диагноз'
     )
 
+    categories_procedure = models.ManyToManyField(
+        'Categories',
+        related_name='categories_patient',
+        verbose_name='Категории процедур',
+        blank=True
+    )
+
+    procedure = models.ManyToManyField(
+        'Procedure',
+        related_name='procedure_patient',
+        verbose_name='Процедуры',
+        blank=True
+    )
+
     def __str__(self):
         return f'{self.name} {self.age} лет'
 

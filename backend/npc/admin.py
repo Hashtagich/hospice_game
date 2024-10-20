@@ -3,7 +3,19 @@ from .models import (Diagnosis, Patient, Categories, Procedure, PatientProcedure
                      UserDoctor)
 
 
-# Register your models here.
+class ProcedureInline(admin.TabularInline):
+    extra = 5
+    verbose_name = "Процедура"
+    verbose_name_plural = "Процедуры"
+    model = Patient.procedure.through
+
+
+class CategoriesProcedureInline(admin.TabularInline):
+    extra = 3
+    verbose_name = "Категории процедуры"
+    verbose_name_plural = "Категории Процедур"
+    model = Patient.categories_procedure.through
+
 
 @admin.register(Diagnosis)
 class DiagnosisAdmin(admin.ModelAdmin):
@@ -13,6 +25,8 @@ class DiagnosisAdmin(admin.ModelAdmin):
 @admin.register(Patient)
 class PatientAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'age')
+    inlines = (CategoriesProcedureInline, ProcedureInline)
+    exclude = ('categories_procedure', 'procedure')
 
 
 @admin.register(Categories)
