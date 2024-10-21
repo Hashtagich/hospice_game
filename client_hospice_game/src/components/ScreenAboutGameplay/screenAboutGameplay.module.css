@@ -1,49 +1,82 @@
 .container {
+    margin-top: 112px;
     display: flex;
-    justify-content: space-between;
-    padding: 80px 0px 0px 0px;
-    width: 1360px;
-    height: 880px;
+    justify-content: center;
+    width: 1440px;
+    height: 972px;
+}
+
+.wrapperGeneral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1440px;
+    height: 972px;
+    border-radius: 40px;
+    background-color: #FDBA05;
 }
 
 .sectionName {
-    margin: 0px;
-    font-family: 'PribambasRegular', sans-serif;
-    font-weight: 400;
-    font-size: 68px;
-    line-height: 68px;
-    color: #50C7B7;
-}
-
-.description {
-    margin-top: 40px;
+    margin: 60px 0px 0px 0px;
     font-family: 'RobotoRegular', sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 28px;
-    color: #465600;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 57.6px;
+    color: #333333;
 }
 
-.videoPlayer {
-    margin-top: 180px;
-    width: 496px;
-    height: 279px;
-    border-radius: 20px;
-    background-image: url('../../images/imagePlayer.png');
+.wrapperSliderMobile {
+    display: none;
 }
 
 .wrapperSlider {
-    width: 777px;
-    height: 612px;
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    width: 1440px;
+    height: 656px;
 }
 
-.slider {
-    width: 777px;
-    height: 503px;
-    border-radius: 32px;
+@media (min-width: 359px) and (max-width: 1235px) {
+
+    .container {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 580px;
+        scroll-margin-top: max(4.5rem, 15vh);
+    }
+
+    .wrapperGeneral {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 580px;
+        border-radius: 40px;
+        background-color: #FDBA05;
+    }
+
+    .sectionName {
+        margin: 47px 0px 56px 0px;
+        font-family: 'RobotoRegular', sans-serif;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 38.4px;
+        color: #333333;
+    }
+
+    .wrapperSlider {
+        display: none;
+    }
+
+    .wrapperSliderMobile {
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+        width: 320px;
+        height: 580px;
+    }
 }
 
-.controlsSlider {
-    width: 777px;
-    height: 109px;
-}
