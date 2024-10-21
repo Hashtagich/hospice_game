@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    column-gap: 40px;
+    padding: 40px 0px 80px 0px;
+    width: 1360px;
+    height: 795px;
+}
+
+.wrapperRealCenterFoto {
+    width: 427px;
+    height: 386px;
+}
+
+.image {
+    width: 427px;
+    height: 319px;
+    border-radius: 100px;
+    background-image: url('../../images/imageRealCenter.png');
+}
+
+.descriptionFotoCenter {
+    text-align: center;
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43.2px;
+    color: #A5C126;
+}
+
+.wrapperAboutGame {
+    width: 893px;
+    height: 635px;
+}
+
+.descriptionGame {
+    width: 893px;
+    height: 200px;
+}
+
+.nameSection {
+    margin: 0px 0px 0px 234px;
+    font-family: 'PribambasRegular', sans-serif;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 68px;
+    color: #A5C126;
+}
+
+.description {
+    margin: 30px 0px 0px 234px;
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+    color: #465600;
+}
+
+.fotoAndButtonGame {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fotoGame {
+    width: 541px;
+    height: 288px;
+    border-radius: 100px;
+    background-image: url('../../images/imageGameScreen.png');
+}
+
+.descriptionFotoGame {
+    text-align: center;
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43.2px;
+    color:  #6BD1C4;
+}
+
+.button {
+    width: 210px;
+    height: 60px;
+    border-radius: 32px;
+    background-color: #A5C126;
+    border: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    cursor: pointer;
+}
