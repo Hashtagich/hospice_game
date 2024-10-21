@@ -600,7 +600,6 @@ ___
     "level": 9223372036854776000,
     "max_furniture_count": 9223372036854776000,
     "max_medical_equipment_count": 9223372036854776000,
-    "max_auxiliary_equipment_count": 9223372036854776000,
     "max_decor_elements_count": 9223372036854776000
   }
 ]
@@ -619,7 +618,6 @@ ___
   "level": 9223372036854776000,
   "max_furniture_count": 9223372036854776000,
   "max_medical_equipment_count": 9223372036854776000,
-  "max_auxiliary_equipment_count": 9223372036854776000,
   "max_decor_elements_count": 9223372036854776000
 }
 ```
@@ -636,7 +634,6 @@ ___
   "level": 9223372036854776000,
   "max_furniture_count": 9223372036854776000,
   "max_medical_equipment_count": 9223372036854776000,
-  "max_auxiliary_equipment_count": 9223372036854776000,
   "max_decor_elements_count": 9223372036854776000
 }
 ```
@@ -653,7 +650,6 @@ ___
   "level": 9223372036854776000,
   "max_furniture_count": 9223372036854776000,
   "max_medical_equipment_count": 9223372036854776000,
-  "max_auxiliary_equipment_count": 9223372036854776000,
   "max_decor_elements_count": 9223372036854776000
 }
 ```
@@ -670,7 +666,6 @@ ___
   "level": 9223372036854776000,
   "max_furniture_count": 9223372036854776000,
   "max_medical_equipment_count": 9223372036854776000,
-  "max_auxiliary_equipment_count": 9223372036854776000,
   "max_decor_elements_count": 9223372036854776000
 }
 ```

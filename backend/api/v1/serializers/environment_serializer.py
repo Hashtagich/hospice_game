@@ -41,7 +41,6 @@ class UserRoomSerializerForGet(serializers.ModelSerializer):
             'level',
             'max_furniture_count',
             'max_medical_equipment_count',
-            'max_auxiliary_equipment_count',
             'max_decor_elements_count'
         ]
 
@@ -54,7 +53,6 @@ class UserRoomSerializerForPost(serializers.ModelSerializer):
             'level',
             'max_furniture_count',
             'max_medical_equipment_count',
-            'max_auxiliary_equipment_count',
             'max_decor_elements_count'
         ]
 
@@ -105,7 +103,7 @@ class UserFurnitureSerializerForPost(serializers.ModelSerializer):
         user = self.context['request'].user
         furniture = attrs.get('furniture')
 
-        if furniture.categories.name in ('Специально медицинское оборудование', 'Вспомогательное оборудование'):
+        if furniture.categories.name == 'Специально медицинское оборудование':
             if not UserRoom.objects.filter(user=user, room=furniture.room).exists():
                 raise serializers.ValidationError("У пользователя нет комнаты для данной мебели.")
 

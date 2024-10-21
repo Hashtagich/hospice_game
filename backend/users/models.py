@@ -111,12 +111,12 @@ class UserAttributes(models.Model):
 
     money = models.PositiveIntegerField(
         verbose_name='Монеты',
-        default=1000
+        default=10000
     )
 
     puzzles = models.PositiveIntegerField(
         verbose_name='Пазлы',
-        default=100
+        default=10000
     )
 
     experience = models.PositiveIntegerField(
