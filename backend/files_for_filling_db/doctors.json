@@ -9,13 +9,13 @@
     "room": 1
   },
   {
-    "surname": "Крючкова",
-    "name": "Елена",
+    "surname": "Иванова",
+    "name": "Светлана",
     "patronymic": "Викторовна",
     "profession": 1,
-    "work_experience": "15 лет",
+    "work_experience": "12 лет в реабилитации",
     "price": 1000,
-    "room": 4
+    "room": 1
   },
   {
     "surname": "Демидов",
@@ -36,11 +36,11 @@
     "room": 3
   },
   {
-    "surname": "Смородинова",
-    "name": "Виктория",
+    "surname": "Попова",
+    "name": "Мила",
     "patronymic": "Евгеньевна",
     "profession": 4,
-    "work_experience": "15 лет",
+    "work_experience": "20 лет в психологии",
     "price": 1000,
     "room": 0
   },

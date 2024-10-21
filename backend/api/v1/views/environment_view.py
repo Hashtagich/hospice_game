@@ -207,12 +207,6 @@ class UserFurnitureViewSet(viewsets.ModelViewSet):
                         'error': 'Достигнуто максимальное количество специального медицинского оборудования в комнате.'},
                         status=status.HTTP_400_BAD_REQUEST)
                 user_room.max_medical_equipment_count -= 1
-            elif category_name == "Вспомогательное оборудование":
-                if user_room.max_auxiliary_equipment_count <= 0:
-                    return Response(
-                        {'error': 'Достигнуто максимальное количество вспомогательного оборудования в комнате.'},
-                        status=status.HTTP_400_BAD_REQUEST)
-                user_room.max_auxiliary_equipment_count -= 1
             elif category_name == "Элементы декора":
                 if user_room.max_decor_elements_count <= 0:
                     return Response({'error': 'Достигнуто максимальное количество элементов декора в комнате.'},

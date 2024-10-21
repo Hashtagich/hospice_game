@@ -52,10 +52,6 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(
             'Initialize db Furniture successfully.\nИнициализация базы данных Мебели выполнена успешно.'))
 
-        create_furniture_db()
-        self.stdout.write(self.style.SUCCESS(
-            'Initialize db Furniture successfully.\nИнициализация базы данных Мебели выполнена успешно.'))
-
         create_doctors_db()
         self.stdout.write(self.style.SUCCESS(
             'Initialize db Doctors successfully.\nИнициализация базы данных Врачей выполнена успешно.'))
