@@ -1,12 +1,6 @@
-import EllipsGreySvg from '../EllipsGreySvg/EllipsGreySvg';
-
-
-const Button = ({ className, nameButton, ellipse }) => {
+const Button = ({ click, className, nameButton }) => {
     return (
-        <button className={className}>
-                {ellipse && <EllipsGreySvg/>}
-                {nameButton}
-            </button>
+        <button onClick={click} className={className}>{nameButton}</button>
     )
 };
 

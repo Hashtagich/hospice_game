@@ -1,0 +1,144 @@
+.header {
+    display: flex;
+    justify-content: center;
+    width: 1440px;
+    height: 189px;
+}
+
+.container {
+    margin-top: 60px;
+    padding: 59px 38px 0px 38px;
+    display: flex;
+    justify-content: space-between;
+    width: 1360px;
+    height: 189px;
+    background-color: #C2D935;
+    border-radius: 32px 32px 0px 0px;
+}
+
+.containerLight {
+    display: none;
+}
+
+.nav {
+    display: block;
+    width: 639px;
+    height: 39.23px;
+}
+
+.navburger {
+    display: none;
+}
+
+.buttonBurger {
+    display: none;
+}
+
+.wrapperNavigation {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 639px;
+    height: 39.23px;
+    list-style: none;
+}
+
+.li {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 33.49px;
+    font-family: 'RobotoRegular', sans-serif;
+}
+
+.li:hover {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.linkAncor {
+    text-decoration: none;
+    color: #333333;
+}
+
+.wrapperLogo {
+    width: 368px;
+    height: 39.23px;
+    background-image: url('../../svg/Logo.svg');
+}
+
+
+@media (min-width: 359px) and (max-width: 1235px) {
+
+    .header {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 77px;
+        z-index: 22;
+    }
+
+    .container {
+        margin: 0px;
+        padding: 0px 14.5px 0px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 77px;
+        background-color: #C2D935;
+        border-radius: 0px;
+        box-shadow: 0px 4px 8px 0px #BAD030;
+
+    }
+
+    .containerLight {
+        margin: 0px;
+        padding: 0px 14.5px 0px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 77px;
+        background-color: white;
+        border-radius: 0px;
+        box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .navburger {
+        display: block;
+        width: 44px;
+        height: 44px;
+        background-image: url('../../svg/menuBurger.svg');
+    }
+
+    .cross {
+        width: 44px;
+        height: 44px;
+        background-image: url('../../svg/cross.svg');
+    }
+
+    .buttonBurger {
+        display: block;
+        width: 44px;
+        height: 44px;
+        opacity: 0;
+    }
+
+    .wrapperNavigation {
+        display: none;
+    }
+
+    .wrapperLogo {
+        width: 50px;
+        height: 49px;
+        background-image: url('../../svg/logoMobile.svg');
+    }
+}
