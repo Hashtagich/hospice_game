@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Витя",
+    "age": 9,
+    "diagnosis": 0,
+    "categories_procedure": "1 2 3",
+    "procedure": "1 2 3"
+  },
+  {
+    "name": "Нико",
+    "age": 11,
+    "diagnosis": 1,
+    "categories_procedure": "1 2 3",
+    "procedure": "1 2 3"
+  },
+  {
+    "name": "Тоша",
+    "age": 5,
+    "diagnosis": 2,
+    "categories_procedure": "1 2 3",
+    "procedure": "1 2 3"
+  },
+  {
+    "name": "Люся",
+    "age": 7,
+    "diagnosis": 3,
+    "categories_procedure": "1 2 3",
+    "procedure": "1 2 3"
+  },
+  {
+    "name": "Кира",
+    "age": 6,
+    "diagnosis": 4,
+    "categories_procedure": "1 2 3",
+    "procedure": "1 2 3"
+  },
+  {
+    "name": "Нонна",
+    "age": 8,
+    "diagnosis": 5,
+    "categories_procedure": "1 2 3",
+    "procedure": "1 2 3"
+  }
+]

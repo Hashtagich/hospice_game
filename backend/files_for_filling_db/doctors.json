@@ -1,0 +1,56 @@
+[
+  {
+    "surname": "Носов",
+    "name": "Максим",
+    "patronymic": "Сергеевич",
+    "profession": 0,
+    "work_experience": "10 лет",
+    "price": 1000,
+    "room": 1
+  },
+  {
+    "surname": "Крючкова",
+    "name": "Елена",
+    "patronymic": "Викторовна",
+    "profession": 1,
+    "work_experience": "15 лет",
+    "price": 1000,
+    "room": 4
+  },
+  {
+    "surname": "Демидов",
+    "name": "Иван",
+    "patronymic": "Дмитриевич",
+    "profession": 2,
+    "work_experience": "12 лет",
+    "price": 1000,
+    "room": 1
+  },
+  {
+    "surname": "Светлов",
+    "name": "Виктор",
+    "patronymic": "Иванович",
+    "profession": 3,
+    "work_experience": "8 лет",
+    "price": 1000,
+    "room": 3
+  },
+  {
+    "surname": "Смородинова",
+    "name": "Виктория",
+    "patronymic": "Евгеньевна",
+    "profession": 4,
+    "work_experience": "15 лет",
+    "price": 1000,
+    "room": 0
+  },
+  {
+    "surname": "Романова",
+    "name": "Юлия",
+    "patronymic": "Михайловна",
+    "profession": 5,
+    "work_experience": "5 лет",
+    "price": 1000,
+    "room": 5
+  }
+]

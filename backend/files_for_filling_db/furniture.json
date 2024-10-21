@@ -1,0 +1,275 @@
+[
+  {
+    "name": "Кресло Стандарт",
+    "categories": 1,
+    "price": 100,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Кресло Шик",
+    "categories": 1,
+    "price": 500,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Кресло Комфортное",
+    "categories": 1,
+    "price": 300,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Диван",
+    "categories": 1,
+    "price": 1000,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Тумба",
+    "categories": 1,
+    "price": 200,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Тумба супер",
+    "categories": 1,
+    "price": 300,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Шкаф",
+    "categories": 1,
+    "price": 500,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Стол рабочий",
+    "categories": 1,
+    "price": 500,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Растение",
+    "categories": 3,
+    "price": 100,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Растение",
+    "categories": 3,
+    "price": 50,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Набор игрушек",
+    "categories": 3,
+    "price": 300,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Картина макси",
+    "categories": 3,
+    "price": 400,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Часы лайк",
+    "categories": 3,
+    "price": 200,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Картина",
+    "categories": 3,
+    "price": 1000,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Часы",
+    "categories": 3,
+    "price": 50,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Ночник",
+    "categories": 3,
+    "price": 500,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "DVD-плеер",
+    "categories": 1,
+    "price": 100,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Телевизор",
+    "categories": 1,
+    "price": 500,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Колонки",
+    "categories": 1,
+    "price": 300,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Фонтан",
+    "categories": 1,
+    "price": 400,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Настольные игры",
+    "categories": 1,
+    "price": 1000,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Книги",
+    "categories": 1,
+    "price": 300,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Коврик мягкий",
+    "categories": 1,
+    "price": 100,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Кофемашина",
+    "categories": 1,
+    "price": 800,
+    "room": null,
+    "description": "Описание"
+  },
+  {
+    "name": "Беговая дорожка",
+    "categories": 0,
+    "price": 100,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Велотренажер",
+    "categories": 0,
+    "price": 50,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Орторент Carmina",
+    "categories": 0,
+    "price": 300,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Блочный тренажер",
+    "categories": 0,
+    "price": 200,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Стенка",
+    "categories": 0,
+    "price": 1000,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Игровой коврик",
+    "categories": 0,
+    "price": 50,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Массажный стол",
+    "categories": 0,
+    "price": 500,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Мяч",
+    "categories": 0,
+    "price": 100,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Спец. литература",
+    "categories": 0,
+    "price": 50,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Мольберт и краски",
+    "categories": 0,
+    "price": 300,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Мольберт и краски",
+    "categories": 0,
+    "price": 1000,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Степпер",
+    "categories": 0,
+    "price": 200,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Подвесная система",
+    "categories": 0,
+    "price": 500,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Ходунки",
+    "categories": 0,
+    "price": 100,
+    "room": 1,
+    "description": "Описание"
+  },
+  {
+    "name": "Фитобол",
+    "categories": 0,
+    "price": 500,
+    "room": 1,
+    "description": "Описание"
+  }
+]
