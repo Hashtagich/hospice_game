@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 0px 0px 0px;
+    width: 1360px;
+    height: 880px;
+}
+
+.sectionName {
+    margin: 0px;
+    font-family: 'PribambasRegular', sans-serif;
+    font-weight: 400;
+    font-size: 68px;
+    line-height: 68px;
+    color: #50C7B7;
+}
+
+.description {
+    margin-top: 40px;
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+    color: #465600;
+}
+
+.videoPlayer {
+    margin-top: 180px;
+    width: 496px;
+    height: 279px;
+    border-radius: 20px;
+    background-image: url('../../images/imagePlayer.png');
+}
+
+.wrapperSlider {
+    width: 777px;
+    height: 612px;
+}
+
+.slider {
+    width: 777px;
+    height: 503px;
+    border-radius: 32px;
+}
+
+.controlsSlider {
+    width: 777px;
+    height: 109px;
+}

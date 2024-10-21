@@ -1,0 +1,65 @@
+.positionActive {
+    position: absolute;
+    opacity: 1;
+    transition: opacity 800ms ease;
+}
+
+.positionSlide {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 800ms ease;
+}
+
+.containerDots {
+    position: relative;
+    top: 535px;
+    width: 777px;
+    height: 109px;
+
+    display: flex;
+    justify-content: center;
+    column-gap: 15PX;
+}
+
+.dot {
+    width: 24px;
+    height: 26px;
+    background-image: url(../../svg/dotNotFill.svg);
+    cursor: pointer;
+}
+
+.activeDote {
+    width: 24px;
+    height: 26px;
+    background-image: url(../../svg/dotFill.svg);
+    cursor: pointer;
+}
+
+.button {
+    position: relative;
+    top: 700px;
+}
+
+.image {
+    width: 777px;
+    height: 503px;
+    border-radius: 32px;
+}
+
+.arrowLeft {
+    position: relative;
+    top: -15px;
+    width: 52px;
+    height: 52px;
+    background-image: url('../../svg/arrowLeft.svg');
+    cursor: pointer;
+}
+
+.arrowRight {
+    position: relative;
+    top: -15px;
+    width: 52px;
+    height: 52px;
+    background-image: url('../../svg/arrowRight.svg');
+    cursor: pointer;
+}

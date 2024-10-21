@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f5bd2794.css",
+    "main.js": "/static/js/main.c2c8ced1.js",
+    "static/js/453.4baa8f55.chunk.js": "/static/js/453.4baa8f55.chunk.js",
+    "static/media/kotThree.png": "/static/media/kotThree.962a42be9234f5db2b46.png",
+    "static/media/kotTwo.png": "/static/media/kotTwo.ccf2021a48052f3a3aed.png",
+    "static/media/kotOne.png": "/static/media/kotOne.bfe92ac11e14dfcfb0b9.png",
+    "static/media/imageRealCenter.png": "/static/media/imageRealCenter.f90dfb073c034eee3e8c.png",
+    "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/imageGaleryTop.png": "/static/media/imageGaleryTop.ef900dde71fc741c6318.png",
+    "static/media/imageGameScreen.png": "/static/media/imageGameScreen.b0dc2910f7995c4b2400.png",
+    "static/media/imageGaleryRight.png": "/static/media/imageGaleryRight.2173a5f8bf28d40251d4.png",
+    "static/media/imageGaleryLeft.png": "/static/media/imageGaleryLeft.ac9dc941be24bb51c159.png",
+    "static/media/Pribambas-Regular.ttf": "/static/media/Pribambas-Regular.306636f786627f038ebd.ttf",
+    "static/media/backgroundScreenOne.png": "/static/media/backgroundScreenOne.6ee6cb4c7d44cefcef7c.png",
+    "static/media/phone.png": "/static/media/phone.508fbf3b0811c26aa605.png",
+    "static/media/odnoklassnikiIcon.svg": "/static/media/odnoklassnikiIcon.420bf7242c2e8fb6804e.svg",
+    "static/media/vkIcon.svg": "/static/media/vkIcon.d060ee2c47ea66ed2c45.svg",
+    "static/media/telegaIcon.svg": "/static/media/telegaIcon.a9df48e6b1598ff017e5.svg",
+    "static/media/arrowLeft.svg": "/static/media/arrowLeft.e1fa9b38411955ca25e0.svg",
+    "static/media/arrowRight.svg": "/static/media/arrowRight.505c6f4e911faea1d071.svg",
+    "index.html": "/index.html",
+    "static/media/bigCircle.svg": "/static/media/bigCircle.b31e3b1db71d8e3a8a44.svg",
+    "static/media/dotNotFill.svg": "/static/media/dotNotFill.9f29d6a5cf12b4e89de1.svg",
+    "static/media/dotFill.svg": "/static/media/dotFill.cccc7290b27d83f8b55d.svg",
+    "main.f5bd2794.css.map": "/static/css/main.f5bd2794.css.map",
+    "main.c2c8ced1.js.map": "/static/js/main.c2c8ced1.js.map",
+    "453.4baa8f55.chunk.js.map": "/static/js/453.4baa8f55.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f5bd2794.css",
+    "static/js/main.c2c8ced1.js"
+  ]
+}

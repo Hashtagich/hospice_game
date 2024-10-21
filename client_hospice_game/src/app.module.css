@@ -1,0 +1,56 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1360px;
+    height: 284px;
+}
+
+.button {
+    margin-top: 80px;
+    width: 225px;
+    height: 60px;
+    border-radius: 32px;
+    color: #F8F7FC;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: 'RobotoRegular', sans-serif;
+    background:  #7676E8;
+    cursor: pointer;
+    border: none;
+}
+
+.wrapperLinksIcons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 112px;
+    height: 24px;
+}
+
+.odnoklassniki {
+    width: 24px;
+    height: 24px;
+    background-image: url('../src/svg/odnoklassnikiIcon.svg');
+}
+
+.telega {
+    width: 24px;
+    height: 24px;
+    background-image: url('../src/svg/telegaIcon.svg');
+}
+
+.vk {
+    width: 24px;
+    height: 24px;
+    background-image: url('../src/svg/vkIcon.svg');
+}
+
+.textFooter {
+    font-family: 'RobotoRegular', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555A65;
+}
