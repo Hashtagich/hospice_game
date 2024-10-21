@@ -128,11 +128,6 @@ class UserRoom(models.Model):
         default=1
     )
 
-    max_auxiliary_equipment_count = models.PositiveIntegerField(
-        verbose_name='Max кол-во вспомогательного оборудования в комнате',
-        default=1
-    )
-
     max_decor_elements_count = models.PositiveIntegerField(
         verbose_name='Max кол-во элементов декора в комнате',
         default=1
@@ -156,7 +151,6 @@ class UserRoom(models.Model):
             self.level += point
             self.max_furniture_count += point
             self.max_medical_equipment_count += point
-            self.max_auxiliary_equipment_count += point
             self.max_decor_elements_count += point
             self.save()
 

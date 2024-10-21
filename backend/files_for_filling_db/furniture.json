@@ -57,56 +57,56 @@
   },
   {
     "name": "Растение",
-    "categories": 3,
+    "categories": 2,
     "price": 100,
     "room": null,
     "description": "Описание"
   },
   {
     "name": "Растение",
-    "categories": 3,
+    "categories": 2,
     "price": 50,
     "room": null,
     "description": "Описание"
   },
   {
     "name": "Набор игрушек",
-    "categories": 3,
+    "categories": 2,
     "price": 300,
     "room": null,
     "description": "Описание"
   },
   {
     "name": "Картина макси",
-    "categories": 3,
+    "categories": 2,
     "price": 400,
     "room": null,
     "description": "Описание"
   },
   {
     "name": "Часы лайк",
-    "categories": 3,
+    "categories": 2,
     "price": 200,
     "room": null,
     "description": "Описание"
   },
   {
     "name": "Картина",
-    "categories": 3,
+    "categories": 2,
     "price": 1000,
     "room": null,
     "description": "Описание"
   },
   {
     "name": "Часы",
-    "categories": 3,
+    "categories": 2,
     "price": 50,
     "room": null,
     "description": "Описание"
   },
   {
     "name": "Ночник",
-    "categories": 3,
+    "categories": 2,
     "price": 500,
     "room": null,
     "description": "Описание"
@@ -227,18 +227,18 @@
     "name": "Спец. литература",
     "categories": 0,
     "price": 50,
-    "room": 1,
+    "room": 0,
     "description": "Описание"
   },
   {
     "name": "Мольберт и краски",
     "categories": 0,
     "price": 300,
-    "room": 1,
+    "room": 5,
     "description": "Описание"
   },
   {
-    "name": "Мольберт и краски",
+    "name": "Игрушки сенсорные",
     "categories": 0,
     "price": 1000,
     "room": 1,

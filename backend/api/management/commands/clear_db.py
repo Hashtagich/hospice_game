@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from .command_for_npc import (
-    clear_categories_procedure_db, clear_procedure_db, clear_patient_db, clear_diagnosis_db, clear_profession_db
+    clear_categories_procedure_db, clear_procedure_db, clear_patient_db, clear_diagnosis_db, clear_profession_db,
+    clear_doctor_db
 )
 
 from .command_for_environment import (
@@ -44,6 +45,9 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(
             f'{count} records deleted from the database.\nЗаписи Категорий мебели в количестве {count} шт. удалены из базы данных.'))
 
+        count = clear_doctor_db()
+        self.stdout.write(self.style.SUCCESS(
+            f'{count} records deleted from the database.\nЗаписи Врачей в количестве {count} шт. удалены из базы данных.'))
         count = clear_room_db()
         self.stdout.write(self.style.SUCCESS(
             f'{count} records deleted from the database.\nЗаписи Комнат в количестве {count} шт. удалены из базы данных.'))

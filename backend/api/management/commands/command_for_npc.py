@@ -125,3 +125,8 @@ def clear_patient_db():
 def clear_profession_db():
     """Функция для удаления базы данных Профессий врачей."""
     return clear_db(name_model=Profession)
+
+
+def clear_doctor_db():
+    """Функция для удаления базы данных Врачей."""
+    return clear_db(name_model=Doctor)
