@@ -12,7 +12,7 @@ const ScreenMain = () => {
                         <h1 className={styles.title}>Построй, лечи, меняй<br/> жизни детей</h1>
                         <h2 className={styles.subTitle}>Представляем Замок Заботы! Симулятор детского реабилитационного центра!</h2>
                     </div>
-                    <a className={styles.bottomLine} rel="noopener noreferrer" href='https://www.figma.com/design/wn8i34WXIVj03MoE4tyyBZ/%D0%97%D0%B0%D0%BC%D0%BE%D0%BA-%D0%B7%D0%B0%D0%B1%D0%BE%D1%82%D1%8B?node-id=0-1&node-type=canvas&t=YCW9gKxGRckBfqb3-0' target="_blank"><Button className={styles.button} nameButton='Играть'/></a>    
+                    <a className={styles.bottomLine} rel="noopener noreferrer" href='https://www.figma.com/proto/wn8i34WXIVj03MoE4tyyBZ/%D0%97%D0%B0%D0%BC%D0%BE%D0%BA-%D0%B7%D0%B0%D0%B1%D0%BE%D1%82%D1%8B?node-id=1-320&node-type=canvas&t=SVYDaCDFBlwDrAO4-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A320' target="_blank"><Button className={styles.button} nameButton='Играть'/></a>    
                 </div>
                 <div className={styles.wrapperVideo}>
                     <video poster="../../svg/backVideo" muted className={styles.videoPlayer} src='' controls>
