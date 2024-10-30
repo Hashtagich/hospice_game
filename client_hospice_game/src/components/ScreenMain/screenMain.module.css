@@ -54,7 +54,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 601px;
-    height: 351px;
+    height: 380px;
 }
 
 .wrapperVideo {
@@ -65,7 +65,7 @@
 .videoPlayer {
     width: 588px;
     height: 393px;
-    background-image: url('../../svg/backVideo.svg');
+    background-image: url('../../svg/newBackVideo.svg');
     background-size: cover;
     border-radius: 32px;
 }
@@ -167,7 +167,7 @@
         margin: 0px 0px 0px 0px;
         width: 320px;
         height: 215px;
-        background-image: url('../../svg/backVideoMobile.svg');
+        background-image: url('../../svg/newBackVideoMobile.svg');
         background-size: cover;
         border-radius: 22px;
     }
