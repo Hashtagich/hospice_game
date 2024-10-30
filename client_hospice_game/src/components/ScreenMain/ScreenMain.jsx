@@ -1,6 +1,6 @@
 import styles from './screenMain.module.css';
 import Button from '../Button/Button';
-//import video from '../../video/videoCastleGame2.0.mp4';
+//import video from '../../video/videoCastleGame480р.mp4';
 
 
 const ScreenMain = () => {
