@@ -24,6 +24,12 @@ class UserViewSet(viewsets.ModelViewSet):
         else:
             return UserSerializerForPost
 
+    @extend_schema(summary="API для получения информации о текущем пользователе без передачи ID")
+    def my_db(self, request, *args, **kwargs):
+        user = request.user
+        serializer = self.get_serializer(user)
+        return Response(serializer.data)
+
     @extend_schema(exclude=True)
     def create(self, request, *args, **kwargs):
         return Response({'error': 'Метод создания недоступен.'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)

@@ -31,6 +31,7 @@ urlpatterns += [
     path('puzzles_up/', PuzzlesUpView.as_view(), name='puzzles-up'),
     path('puzzles_down/', PuzzlesDownView.as_view(), name='puzzles-down'),
     path('experience_up/', ExperienceUpView.as_view(), name='experience-up'),
+    path('user_db/', UserViewSet.as_view({'get': 'my_db'}), name='user-db'),
 ]
 
 # Room
