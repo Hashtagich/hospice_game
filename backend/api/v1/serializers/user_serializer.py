@@ -15,7 +15,7 @@ def validate_user_money(user, amount):
 class UserAttributesSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAttributes
-        fields = ['money', 'puzzles', 'experience', 'level']
+        fields = ['money', 'puzzles', 'experience', 'level', 'number_patients']
 
 
 class UserSerializerForGet(serializers.ModelSerializer):
