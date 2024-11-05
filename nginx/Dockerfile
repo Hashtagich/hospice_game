@@ -10,3 +10,4 @@ RUN chown -R nginx:nginx /app/static /app/media
 RUN chmod -R 755 /app/static /app/media
 
 COPY nginx.conf /etc/nginx/conf.d/
+COPY proxy_params /etc/nginx/proxy_params

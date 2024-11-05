@@ -1,45 +1,58 @@
-  services:
-    web:
-      build:
-        context: ./backend
-        dockerfile: Dockerfile
-      container_name: web
-      entrypoint: ./entrypoint.sh
-      command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000
-      env_file:
-        - ./backend/.env
-      volumes:
-        - .:/app
-        - static_volume:/app/static
-        - media_volume:/app/media
-      working_dir: /app/backend
-      depends_on:
-        - db
-      ports:
-        - "8000:8000"
+version: '3.8'
 
-    db:
-      image: postgres:latest
-      container_name: db
-      env_file:
-        - db.env
-      volumes:
-        - pgdata:/var/lib/postgresql/data
-      ports:
-        - "5432:5432"
+services:
+  web:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: web
+    entrypoint: ./entrypoint.sh
+    command: gunicorn backend.wsgi:application --bind 0.0.0.0:8001
+    env_file:
+      - ./backend/.env
+    volumes:
+      - .:/app
+      - static_volume:/app/static
+      - media_volume:/app/media
+    working_dir: /app/backend
+    depends_on:
+      - db
+#    ports:
+#      - "8001:8001"
 
-    nginx:
-      build: ./nginx
-      container_name: nginx
-      volumes:
-        - ./backend/static:/app/static
-        - ./backend/media:/app/media
-      ports:
-        - "80:80"
-      depends_on:
-        - web
+  db:
+    image: postgres:latest
+    container_name: db
+    env_file:
+      - db.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
-  volumes:
-    pgdata:
-    static_volume:
-    media_volume:
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    volumes:
+      - ./backend/static:/app/static
+      - ./backend/media:/app/media
+      - ./client_hospice_game/build:/usr/share/nginx/html  # путь к статическим файлам фронтенда
+    ports:
+      - "80:80"
+      - "8001:8001"
+    depends_on:
+      - web
+      - frontend
+
+  frontend:
+    build:
+      context: ./client_hospice_game  # путь к директории фронтенда
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:
+  static_volume:
+  media_volume:
