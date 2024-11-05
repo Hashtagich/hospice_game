@@ -11,7 +11,7 @@ const Burgermenu = ({ headerColor, closeBurger }) => {
                 <li className={styles.li}><a className={styles.linkAncor} onClick={closeBurger} href='#mobilegame'>Мобильная версия</a></li>
 				<li className={styles.li}><a className={styles.linkAncor} onClick={closeBurger} href='#realcenter'>РЦ "Мозаика"</a></li>
 			</ul>
-            <div className={styles. listIconsLink}>
+            <div className={styles.listIconsLink}>
                 <div className={styles.vkIcon}></div>
                 <div className={styles.telegaIcon}></div>
                 <div className={styles.facebookIcon}></div>
