@@ -9,7 +9,7 @@ class Room(models.Model):
 
     name = models.CharField(
         verbose_name='Название комнаты',
-        max_length=30,
+        max_length=70,
         null=True
     )
 
@@ -42,7 +42,7 @@ class Categories(models.Model):
     """Модель категории мебели."""
     name = models.CharField(
         verbose_name='Название',
-        max_length=30,
+        max_length=60,
         null=True
     )
 
