@@ -91,7 +91,7 @@ class Procedure(models.Model):
     """Модель процедуры."""
     name = models.CharField(
         verbose_name='Название',
-        max_length=30,
+        max_length=70,
         null=True
     )
 

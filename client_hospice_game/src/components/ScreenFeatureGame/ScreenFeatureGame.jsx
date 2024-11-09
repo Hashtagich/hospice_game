@@ -28,7 +28,7 @@ const ScreenFeatureGame = () => {
                 </div>
                 <div className={styles.wrapperCell}>
                 <div className={styles.iconCellMozikarehub}></div>
-                    <h2 className={styles.titleCell}>Прототип центра «Мозайка»</h2>
+                    <h2 className={styles.titleCell}>Прототип центра «Мозаика»</h2>
                     <h3 className={styles.subtitleCell}>Помощь реальным детям  реабилитационного центра</h3>
                 </div>
                 <div className={styles.wrapperCell}>

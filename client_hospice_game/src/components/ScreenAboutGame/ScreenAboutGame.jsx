@@ -11,7 +11,7 @@ const ScreenAboutGame = () => {
             <div className={styles.wrapperAboutGame}>
                 <p className={styles.description}>Это игра-симулятор реального детского реабилитационного центра. Каждая покупка помогает настоящим детям. Игра основана на опыте действующего центра - создавая виртуальный, вы помогаете развивать реальный.</p>
                 <img src={imageRealCenterMobile} className={styles.imageMobile} alt="Foto real center"/>
-                <a href='https://detireb.ru/' rel="noopener noreferrer" target="_blank"><Button className={styles.button} nameButton='Мозайка'/></a>
+                <a href='https://detireb.ru/' rel="noopener noreferrer" target="_blank"><Button className={styles.button} nameButton='Мозаика'/></a>
             </div>
         </section>
     )
