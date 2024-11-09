@@ -76,7 +76,7 @@ const TheFooter = () => {
 						<h4 className={styles.textPolicy}>Конфиденциальность</h4>
 						<h4 className={styles.textPolicy}>Условия</h4>
 					</div>
-					<h4 className={styles.textPolicy+' '+styles.infoAboutGame}>Игра “Замок Заботы” является собственностью детского реабилитационно центра “Мозайка”</h4>
+					<h4 className={styles.textPolicy+' '+styles.infoAboutGame}>Игра “Замок Заботы” является собственностью детского реабилитационно центра “Мозаика”</h4>
 				</div>
 			</div>
 		</footer>

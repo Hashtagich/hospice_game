@@ -26,7 +26,7 @@ const closeBurger = () => setIsOpen(false);
                         <li className={styles.li}><a className={styles.linkAncor} href='#featuresgame'>Особенности</a></li>
                         <li className={styles.li}><a className={styles.linkAncor} href='#gameplay'>Геймплей</a></li>
                         <li className={styles.li}><a className={styles.linkAncor} href='#mobilegame'>Мобильная версия</a></li>
-                        <li className={styles.li}><a className={styles.linkAncor} href='#realcenter'>РЦ "Мозайка"</a></li>
+                        <li className={styles.li}><a className={styles.linkAncor} href='#realcenter'>РЦ "Мозаика"</a></li>
                     </ul>
                 </nav>
             </div>

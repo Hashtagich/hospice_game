@@ -8,7 +8,7 @@
 
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 1360px;
     height: 380px;
 }
@@ -24,6 +24,7 @@
 }
 
 .wrapperNavigationAndInfo {
+    margin-left: 126px;
     width: 777px;
     height: 380px;
 }
@@ -244,7 +245,7 @@
 
     .wrapperLogoForMobile {
         display: block;
-        margin-bottom: 88px;
+        margin: 0px 20px 88px 0px;
         width: 164px;
         height: 103.37px;
         background-image: url('../../svg/logoFooterForMobile.svg');
@@ -257,16 +258,17 @@
     }
     
     .container {
+        padding-left: 20px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-left: 20px;
         width: 100%;
         height: 1400px;
     }
 
     .wrapperNavigationAndInfo {
+        margin: 0px;
         width: 100%;
         height: 898px;
     }
